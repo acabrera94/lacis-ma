@@ -64,31 +64,31 @@ frq(db$num_empleados)
 db$css <- NA
 
 # Condition 1: Burguesía tradicional (Value: 1)
-db$css[db$auto_emp == 1 & db$num_empleados == 3 & db$WRKSUP == 1] <- 1
+db$css[db$auto_emp == 1 & db$num_empleados == 2 & db$WRKSUP == 1] <- 1
 
 # Condition 2: Pequeño empleador (Value: 2)
-db$css[db$auto_emp == 1 & db$num_empleados == 2 & db$WRKSUP == 1] <- 2
+db$css[db$auto_emp == 1 & db$num_empleados == 1 & db$WRKSUP == 1] <- 2
 
 # Condition 3: Pequeña burguesía (Value: 3)
-db$css[db$auto_emp == 1 & db$num_empleados == 1 & db$WRKSUP == 1] <- 3
+db$css[db$auto_emp == 1 & db$num_empleados == 3] <- 3
 
-# Condition 4: Directivo/Supervisor Experto (BA) (Value: 4)
-db$css[db$auto_emp == 2 & db$WRKSUP == 1 & db$credencial == 3] <- 4
+# Condition 4: Directivo/Supervisor Experto (BA) (Value: 4) - (Skills grupo 10 al 26 (isco) + Correción por credencial)
+db$css[db$auto_emp == 2 & db$WRKSUP == 1 & db$skills_1digit %in% c(1, 2) & db$credencial == 3 ] <- 4
 
 # Condition 5: Experto (BA+) No directivo (Value: 5)
-db$css[db$auto_emp == 2 & db$WRKSUP == 2 & db$credencial == 3] <- 5
+db$css[db$auto_emp == 2 & db$WRKSUP == 2 & db$skills_1digit %in% c(1, 2) & db$credencial == 3] <- 5
 
 # Condition 6: Directivo/Supervisor Semi-Credencializado (Value: 6)
-db$css[db$auto_emp == 2 & db$WRKSUP == 1 & db$credencial == 2] <- 6
+db$css[db$auto_emp == 2 & db$WRKSUP == 1 & db$skills_1digit %in% c(3, 6)] <- 6
 
 # Condition 7: Obrero semi-credencializado (Value: 7)
-db$css[db$auto_emp == 2 & db$WRKSUP == 2 & db$credencial == 2] <- 7
+db$css[db$auto_emp == 2 & db$WRKSUP == 2 & db$skills_1digit %in% c(3, 6)] <- 7
 
 # Condition 8: Directivo/Supervisor no credencializado (Value: 8)
-db$css[db$auto_emp == 2 & db$WRKSUP == 1 & db$credencial == 1] <- 8
+db$css[db$auto_emp == 2 & db$WRKSUP == 1 & db$skills_1digit %in% c(7, 9)] <- 8
 
 # Condition 9: Proletariado tradicional (Value: 9)
-db$css[db$auto_emp == 2 & db$WRKSUP == 2 & db$credencial == 1] <- 9
+db$css[db$auto_emp == 2 & db$WRKSUP == 2 & db$skills_1digit %in% c(7, 9)] <- 9
 
 frq(db$css)
 
@@ -109,9 +109,7 @@ frq(db$pos_pol)
 
 # Construcción de variable acción colectiva (sumatoria)
 #Loop that recodes, 1:2 = 1 (Yes), 3:4 = 2 (No)
-variables <- c("V17", "V18", "V19", "V20",
-               "V21", "V22", "V23", "V24", "V25",
-               "V27", "V28")  # List of variables to recode
+variables <- c("V17", "V18", "V19", "V22")  # List of variables to recode
 
 for (var in variables) {
   db[[var]] <- ifelse(db[[var]] %in% c(1, 2), 1, ifelse(db[[var]] %in% c(3, 4), 2, db[[var]]))
@@ -123,15 +121,15 @@ replace_values <- function(data, vars) {
   }
   return(data)
 }
-variables <- variables <- c("V17", "V18", "V19", "V20",
-                            "V21", "V22", "V23", "V24", "V25",
-                            "V27", "V28") 
+variables <- variables <- c("V17", "V18", "V19", "V22") 
 db <- replace_values(db, variables)
+
+
 #Segundo: Sumatoria
 # Create a new variable named 'new_variable' as the summation of other variables
-db$acc <- rowSums(db[, c("V17", "V18", "V19", "V20",
-                         "V21", "V22", "V23", "V24", "V25",
-                         "V27", "V28")])
+db$acc <- rowSums(db[, c("V17", "V18", "V19", "V22")])
+
+
 #Construcción de acc2
 db$acc2 <- car::recode(db$acc,
                        "0=0; 1:16=1")
