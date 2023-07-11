@@ -12,6 +12,24 @@ knitr::opts_chunk$set(echo = TRUE)
 
 # Introduction
 
-Social movement studies have a long-standing tradition of studying conflict, social change, and [@mcadam2004]
+Social movement studies have a long-standing tradition of studying conflict, social change, and what some scholars contentious politics [@mcadam2004]. However, with the recent protests located in the Global North have shown that
+
+# Methodology
+
+## Data
+
+## Variable
+
+## Methods
+
+# Results
+
+## Descriptives
+
+## Models
+
+# Discussion
+
+## Conclusions
 
 # References
