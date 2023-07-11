@@ -9,16 +9,16 @@
 
 ################  PARTE 3: ANALISIS ##########################################
 
-
+t1<-dfSummary(db2, 
+          plain.ascii  = FALSE)
 
 
 #### Summary descriptive tables ####
 
-## 1. Desciptives
+## 1. Descriptives
 
 
-## 2. Box plots
-
+tabla1<-
 
 ## 3. 
 
@@ -35,6 +35,7 @@ db$css<-as_factor(db$css) #Clase Social Marx
 db$sex<-as_factor(db$SEX) #Sexo
 db$cs_sub2<-as_factor(db$cs_sub) #Clase Social Subj.
 db$pos_pol2<-as_factor(db$pos_pol) #Posición política
+
 
 db$acc<-as_factor(db$acc) #Acción Colectiva
 db$acc2<-as_factor(db$acc2) #Acción Colectiva2
@@ -66,3 +67,6 @@ reg4<-lm(acc ~ css+cs_sub2+pos_pol2+AGE+sex, data = db)
 sjPlot::tab_model(list(reg1, reg2, reg3, reg4), show.ci=FALSE, p.style = "stars",
                   string.pred = "Predictores", string.est = "β",digits = 3,
                   dv.labels = c("Modelo 1", "Modelo 2", "Modelo 3", "Modelo 4"))
+
+
+

@@ -12,6 +12,7 @@ pacman::p_load(tidyverse,
                summarytools,
                expss,
                car,
+               gtsummary,
                foreign,
                coefplot,
                fastDummies)
@@ -96,6 +97,16 @@ for (var in names(recoding_specs)) {
   }
 }
 
+
+## Selection of working variables
+
+db2<-select(db,
+           SEX,
+           AGE,
+           acc,
+           pos_pol,
+           css,
+           cs_sub)
 
 
 ####  4. Resumen de datos ####

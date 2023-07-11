@@ -391,141 +391,191 @@ with the recent protests located in the Global North have shown that</p>
 <h1>Methodology</h1>
 <div id="data" class="section level2">
 <h2>Data</h2>
+<div id="descriptives" class="section level3">
+<h3>Descriptives</h3>
+<pre class="r"><code>source(&quot;C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/code.R&quot;)</code></pre>
+<pre><code>## Warning: package &#39;pacman&#39; was built under R version 4.2.3</code></pre>
+<pre><code>## Warning in model.response(mf, &quot;numeric&quot;): using type = &quot;numeric&quot; with a factor
+## response will be ignored</code></pre>
+<pre><code>## Warning in Ops.factor(y, z$residuals): &#39;-&#39; not meaningful for factors</code></pre>
+<pre><code>## Warning in model.response(mf, &quot;numeric&quot;): using type = &quot;numeric&quot; with a factor
+## response will be ignored</code></pre>
+<pre><code>## Warning in Ops.factor(y, z$residuals): &#39;-&#39; not meaningful for factors</code></pre>
+<pre><code>## Warning in model.response(mf, &quot;numeric&quot;): using type = &quot;numeric&quot; with a factor
+## response will be ignored</code></pre>
+<pre><code>## Warning in Ops.factor(y, z$residuals): &#39;-&#39; not meaningful for factors</code></pre>
+<pre><code>## Warning in model.response(mf, &quot;numeric&quot;): using type = &quot;numeric&quot; with a factor
+## response will be ignored</code></pre>
+<pre><code>## Warning in Ops.factor(y, z$residuals): &#39;-&#39; not meaningful for factors</code></pre>
+<pre class="r"><code>print(t1)</code></pre>
 </div>
-<div id="variable" class="section level2">
-<h2>Variable</h2>
+<div id="data-frame-summary" class="section level3">
+<h3>Data Frame Summary</h3>
+<div id="db2" class="section level4">
+<h4>db2</h4>
+<p><strong>Dimensions:</strong> 49807 x 6<br />
+<strong>Duplicates:</strong> 22926</p>
+<table>
+<colgroup>
+<col width="2%" />
+<col width="22%" />
+<col width="22%" />
+<col width="15%" />
+<col width="12%" />
+<col width="11%" />
+<col width="6%" />
+<col width="6%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th align="left">No</th>
+<th align="left">Variable</th>
+<th align="left">Label</th>
+<th align="left">Stats / Values</th>
+<th align="left">Freqs (% of Valid)</th>
+<th align="left">Graph</th>
+<th align="left">Valid</th>
+<th align="left">Missing</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td align="left">1</td>
+<td align="left">SEX<br />
+[haven_labelled, vctrs_vctr, double]</td>
+<td align="left">Sex of Respondent</td>
+<td align="left">Min : 1<br />
+Mean : 1.5<br />
+Max : 2</td>
+<td align="left">1 : 23224 (46.7%)<br />
+2 : 26559 (53.3%)</td>
+<td align="left">IIIIIIIII<br />
+IIIIIIIIII</td>
+<td align="left">49783<br />
+(100.0%)</td>
+<td align="left">24<br />
+(0.0%)</td>
+</tr>
+<tr class="even">
+<td align="left">2</td>
+<td align="left">AGE<br />
+[haven_labelled, vctrs_vctr, double]</td>
+<td align="left">Age of respondent</td>
+<td align="left">Mean (sd) : 48.1 (17.7)<br />
+min &lt; med &lt; max:<br />
+15 &lt; 48 &lt; 102<br />
+IQR (CV) : 29 (0.4)</td>
+<td align="left">87 distinct values</td>
+<td align="left">  . : . : .<br />
+  : : : : :<br />
+. : : : : : :<br />
+: : : : : : : .<br />
+: : : : : : : : .</td>
+<td align="left">49669<br />
+(99.7%)</td>
+<td align="left">138<br />
+(0.3%)</td>
+</tr>
+<tr class="odd">
+<td align="left">3</td>
+<td align="left">acc<br />
+[numeric]</td>
+<td align="left"></td>
+<td align="left">Mean (sd) : 1.3 (1.3)<br />
+min &lt; med &lt; max:<br />
+0 &lt; 1 &lt; 4<br />
+IQR (CV) : 2 (1)</td>
+<td align="left">0 : 17265 (38.3%)<br />
+1 : 10327 (22.9%)<br />
+2 : 7983 (17.7%)<br />
+3 : 6014 (13.3%)<br />
+4 : 3498 ( 7.8%)</td>
+<td align="left">IIIIIII<br />
+IIII<br />
+III<br />
+II<br />
+I</td>
+<td align="left">45087<br />
+(90.5%)</td>
+<td align="left">4720<br />
+(9.5%)</td>
+</tr>
+<tr class="even">
+<td align="left">4</td>
+<td align="left">pos_pol<br />
+[haven_labelled, vctrs_vctr, double]</td>
+<td align="left">Q44 Political self-placement: Left - Right</td>
+<td align="left">Mean (sd) : 2.1 (0.8)<br />
+min &lt; med &lt; max:<br />
+1 &lt; 2 &lt; 3<br />
+IQR (CV) : 2 (0.4)</td>
+<td align="left">1 : 12462 (30.5%)<br />
+2 : 12295 (30.1%)<br />
+3 : 16048 (39.3%)</td>
+<td align="left">IIIIII<br />
+IIIIII<br />
+IIIIIII</td>
+<td align="left">40805<br />
+(81.9%)</td>
+<td align="left">9002<br />
+(18.1%)</td>
+</tr>
+<tr class="odd">
+<td align="left">5</td>
+<td align="left">css<br />
+[numeric]</td>
+<td align="left"></td>
+<td align="left">Mean (sd) : 5.8 (2.4)<br />
+min &lt; med &lt; max:<br />
+1 &lt; 6 &lt; 9<br />
+IQR (CV) : 5 (0.4)</td>
+<td align="left">1 : 328 ( 1.3%)<br />
+2 : 1152 ( 4.6%)<br />
+3 : 5113 (20.3%)<br />
+4 : 2595 (10.3%)<br />
+5 : 3380 (13.4%)<br />
+6 : 1848 ( 7.3%)<br />
+7 : 3455 (13.7%)<br />
+8 : 1053 ( 4.2%)<br />
+9 : 6231 (24.8%)</td>
+<td align="left"><br />
+<br />
+IIII<br />
+II<br />
+II<br />
+I<br />
+II<br />
+<br />
+IIII</td>
+<td align="left">25155<br />
+(50.5%)</td>
+<td align="left">24652<br />
+(49.5%)</td>
+</tr>
+<tr class="even">
+<td align="left">6</td>
+<td align="left">cs_sub<br />
+[haven_labelled, vctrs_vctr, double]</td>
+<td align="left">Top-Bottom self-placement</td>
+<td align="left">Mean (sd) : 2 (0.7)<br />
+min &lt; med &lt; max:<br />
+1 &lt; 2 &lt; 3<br />
+IQR (CV) : 2 (0.4)</td>
+<td align="left">1 : 11940 (26.4%)<br />
+2 : 20312 (44.9%)<br />
+3 : 13018 (28.8%)</td>
+<td align="left">IIIII<br />
+IIIIIIII<br />
+IIIII</td>
+<td align="left">45270<br />
+(90.9%)</td>
+<td align="left">4537<br />
+(9.1%)</td>
+</tr>
+</tbody>
+</table>
 </div>
-<div id="methods" class="section level2">
-<h2>Methods</h2>
 </div>
-</div>
-<div id="results" class="section level1">
-<h1>Results</h1>
-<div id="descriptive" class="section level2">
-<h2>Descriptive</h2>
-<pre class="r"><code>summarytools::dfSummary(db, plain.ascii = FALSE)</code></pre>
-<pre><code>## ### Data Frame Summary  
-## #### db  
-## **Dimensions:** 49807 x 20  
-## **Duplicates:** 104  
-## 
-## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-## No   Variable                               Label                                     Stats / Values                 Freqs (% of Valid)    Graph                      Valid      Missing  
-## ---- -------------------------------------- ----------------------------------------- ------------------------------ --------------------- -------------------------- ---------- ---------
-## 1    SEX\                                   Sex of Respondent                         Min  : 1\                      1 : 23224 (46.7%)\    IIIIIIIII \                49783\     24\      
-##      [haven_labelled, vctrs_vctr, double]                                             Mean : 1.5\                    2 : 26559 (53.3%)     IIIIIIIIII                 (100.0%)   (0.0%)   
-##                                                                                       Max  : 2                                                                                            
-## 
-## 2    AGE\                                   Age of respondent                         Mean (sd) : 48.1 (17.7)\       87 distinct values    \ \ . : . : .\             49669\     138\     
-##      [haven_labelled, vctrs_vctr, double]                                             min &lt; med &lt; max:\                                    \ \ : : : : :\             (99.7%)    (0.3%)   
-##                                                                                       15 &lt; 48 &lt; 102\                                       . : : : : : :\                                 
-##                                                                                       IQR (CV) : 29 (0.4)                                  : : : : : : : .\                               
-##                                                                                                                                            : : : : : : : : .                              
-## 
-## 3    DEGREE\                                Highest completed education level:        Mean (sd) : 3.3 (1.6)\         0 :  1915 ( 3.9%)\    \                          49322\     485\     
-##      [haven_labelled, vctrs_vctr, double]   Categories for international comparison   min &lt; med &lt; max:\              1 :  3465 ( 7.0%)\    I \                        (99.0%)    (1.0%)   
-##                                                                                       0 &lt; 3 &lt; 6\                     2 : 11115 (22.5%)\    IIII \                                         
-##                                                                                       IQR (CV) : 3 (0.5)             3 : 12975 (26.3%)\    IIIII \                                        
-##                                                                                                                      4 :  6114 (12.4%)\    II \                                           
-##                                                                                                                      5 :  8699 (17.6%)\    III \                                          
-##                                                                                                                      6 :  5039 (10.2%)     II                                             
-## 
-## 4    EMPREL\                                Employment relationship                   Mean (sd) : 1.3 (0.7)\         1 : 35488 (83.5%)\    IIIIIIIIIIIIIIII \         42521\     7286\    
-##      [haven_labelled, vctrs_vctr, double]                                             min &lt; med &lt; max:\              2 :  4064 ( 9.6%)\    I \                        (85.4%)    (14.6%)  
-##                                                                                       1 &lt; 1 &lt; 4\                     3 :  1920 ( 4.5%)\    \                                              
-##                                                                                       IQR (CV) : 0 (0.5)             4 :  1049 ( 2.5%)                                                    
-## 
-## 5    NEMPLOY\                               Self-employed: how many employees         Mean (sd) : 0.6 (36.4)\        70 distinct values    :\                         48244\     1563\    
-##      [haven_labelled, vctrs_vctr, double]                                             min &lt; med &lt; max:\                                    :\                         (96.9%)    (3.1%)   
-##                                                                                       0 &lt; 0 &lt; 6000\                                        :\                                             
-##                                                                                       IQR (CV) : 0 (58.5)                                  :\                                             
-##                                                                                                                                            :                                              
-## 
-## 6    WRKSUP\                                Supervise other employees                 Min  : 1\                      1 : 11464 (27.5%)\    IIIII \                    41697\     8110\    
-##      [haven_labelled, vctrs_vctr, double]                                             Mean : 1.7\                    2 : 30233 (72.5%)     IIIIIIIIIIIIII             (83.7%)    (16.3%)  
-##                                                                                       Max  : 2                                                                                            
-## 
-## 7    TOPBOT\                                Top-Bottom self-placement                 Mean (sd) : 5.4 (1.9)\         1 :  1495 ( 3.3%)\    \                          45270\     4537\    
-##      [haven_labelled, vctrs_vctr, double]                                             min &lt; med &lt; max:\              2 :  1756 ( 3.9%)\    \                          (90.9%)    (9.1%)   
-##                                                                                       1 &lt; 5 &lt; 10\                    3 :  3724 ( 8.2%)\    I \                                            
-##                                                                                       IQR (CV) : 3 (0.3)             4 :  4965 (11.0%)\    II \                                           
-##                                                                                                                      5 : 11394 (25.2%)\    IIIII \                                        
-##                                                                                                                      6 :  8918 (19.7%)\    III \                                          
-##                                                                                                                      7 :  7043 (15.6%)\    III \                                          
-##                                                                                                                      8 :  4205 ( 9.3%)\    I \                                            
-##                                                                                                                      9 :   998 ( 2.2%)\    \                                              
-##                                                                                                                      10 :   772 ( 1.7%)                                                   
-## 
-## 8    V17\                                   Q13 Political actions: sign a petition    Mean (sd) : 2.7 (1.1)\         1 :  9752 (20.3%)\    IIII \                     47970\     1837\    
-##      [haven_labelled, vctrs_vctr, double]                                             min &lt; med &lt; max:\              2 : 11756 (24.5%)\    IIII \                     (96.3%)    (3.7%)   
-##                                                                                       1 &lt; 3 &lt; 4\                     3 : 11887 (24.8%)\    IIII \                                         
-##                                                                                       IQR (CV) : 2 (0.4)             4 : 14575 (30.4%)     IIIIII                                         
-## 
-## 9    V18\                                   Q14 Political actions: boycott certain    Mean (sd) : 2.9 (1.1)\         1 :  8981 (19.0%)\    III \                      47158\     2649\    
-##      [haven_labelled, vctrs_vctr, double]   products                                  min &lt; med &lt; max:\              2 :  5199 (11.0%)\    II \                       (94.7%)    (5.3%)   
-##                                                                                       1 &lt; 3 &lt; 4\                     3 : 12978 (27.5%)\    IIIII \                                        
-##                                                                                       IQR (CV) : 2 (0.4)             4 : 20000 (42.4%)     IIIIIIII                                       
-## 
-## 10   V19\                                   Q15 Political actions: take part in a     Mean (sd) : 3.2 (0.9)\         1 :  2747 ( 5.7%)\    I \                        48361\     1446\    
-##      [haven_labelled, vctrs_vctr, double]   demonstration                             min &lt; med &lt; max:\              2 :  7931 (16.4%)\    III \                      (97.1%)    (2.9%)   
-##                                                                                       1 &lt; 3 &lt; 4\                     3 : 14066 (29.1%)\    IIIII \                                        
-##                                                                                       IQR (CV) : 1 (0.3)             4 : 23617 (48.8%)     IIIIIIIII                                      
-## 
-## 11   V20\                                   Q16 Political actions: attend political   Mean (sd) : 3.1 (1)\           1 :  3736 ( 7.7%)\    I \                        48241\     1566\    
-##      [haven_labelled, vctrs_vctr, double]   meeting or rally                          min &lt; med &lt; max:\              2 :  8298 (17.2%)\    III \                      (96.9%)    (3.1%)   
-##                                                                                       1 &lt; 3 &lt; 4\                     3 : 13410 (27.8%)\    IIIII \                                        
-##                                                                                       IQR (CV) : 1 (0.3)             4 : 22797 (47.3%)     IIIIIIIII                                      
-## 
-## 12   V21\                                   Q17 Political actions: contact a          Mean (sd) : 3.2 (0.9)\         1 :  3627 ( 7.5%)\    I \                        48293\     1514\    
-##      [haven_labelled, vctrs_vctr, double]   politician                                min &lt; med &lt; max:\              2 :  5031 (10.4%)\    II \                       (97.0%)    (3.0%)   
-##                                                                                       1 &lt; 3 &lt; 4\                     3 : 16635 (34.4%)\    IIIIII \                                       
-##                                                                                       IQR (CV) : 1 (0.3)             4 : 23000 (47.6%)     IIIIIIIII                                      
-## 
-## 13   V22\                                   Q18 Political actions: donate money or    Mean (sd) : 2.9 (1.1)\         1 :  8344 (17.3%)\    III \                      48102\     1705\    
-##      [haven_labelled, vctrs_vctr, double]   raise funds                               min &lt; med &lt; max:\              2 :  7082 (14.7%)\    II \                       (96.6%)    (3.4%)   
-##                                                                                       1 &lt; 3 &lt; 4\                     3 : 11355 (23.6%)\    IIII \                                         
-##                                                                                       IQR (CV) : 2 (0.4)             4 : 21321 (44.3%)     IIIIIIII                                       
-## 
-## 14   V23\                                   Q19 Political actions: contact media      Mean (sd) : 3.5 (0.8)\         1 :  1759 ( 3.6%)\    \                          48286\     1521\    
-##      [haven_labelled, vctrs_vctr, double]                                             min &lt; med &lt; max:\              2 :  3074 ( 6.4%)\    I \                        (96.9%)    (3.1%)   
-##                                                                                       1 &lt; 4 &lt; 4\                     3 : 15044 (31.2%)\    IIIIII \                                       
-##                                                                                       IQR (CV) : 1 (0.2)             4 : 28409 (58.8%)     IIIIIIIIIII                                    
-## 
-## 15   V24\                                   Q20 Political actions: express views on   Mean (sd) : 3.5 (0.9)\         1 :  3447 ( 7.2%)\    I \                        48045\     1762\    
-##      [haven_labelled, vctrs_vctr, double]   the internet                              min &lt; med &lt; max:\              2 :  2235 ( 4.7%)\    \                          (96.5%)    (3.5%)   
-##                                                                                       1 &lt; 4 &lt; 4\                     3 : 11105 (23.1%)\    IIII \                                         
-##                                                                                       IQR (CV) : 1 (0.3)             4 : 31258 (65.1%)     IIIIIIIIIIIII                                  
-## 
-## 16   V25\                                   Q21 Frequency using media to get          Mean (sd) : 2.5 (1.9)\         1 : 20093 (41.0%)\    IIIIIIII \                 49037\     770\     
-##      [haven_labelled, vctrs_vctr, double]   political news or information             min &lt; med &lt; max:\              2 : 13725 (28.0%)\    IIIII \                    (98.5%)    (1.5%)   
-##                                                                                       1 &lt; 2 &lt; 7\                     3 :  3068 ( 6.3%)\    I \                                            
-##                                                                                       IQR (CV) : 2 (0.7)             4 :  3024 ( 6.2%)\    I \                                            
-##                                                                                                                      5 :  3048 ( 6.2%)\    I \                                            
-##                                                                                                                      6 :  3090 ( 6.3%)\    I \                                            
-##                                                                                                                      7 :  2989 ( 6.1%)     I                                              
-## 
-## 17   V27\                                   Q23 Status of belonging to: political     Mean (sd) : 3.7 (0.8)\         1 :  1841 ( 3.8%)\    \                          48644\     1163\    
-##      [haven_labelled, vctrs_vctr, double]   party                                     min &lt; med &lt; max:\              2 :  3639 ( 7.5%)\    I \                        (97.7%)    (2.3%)   
-##                                                                                       1 &lt; 4 &lt; 4\                     3 :  4101 ( 8.4%)\    I \                                            
-##                                                                                       IQR (CV) : 0 (0.2)             4 : 39063 (80.3%)     IIIIIIIIIIIIIIII                               
-## 
-## 18   V28\                                   Q24 Status of belonging to: trade union   Mean (sd) : 3.3 (0.9)\         1 :  2837 ( 5.8%)\    I \                        48614\     1193\    
-##      [haven_labelled, vctrs_vctr, double]   etc.                                      min &lt; med &lt; max:\              2 :  7818 (16.1%)\    III \                      (97.6%)    (2.4%)   
-##                                                                                       1 &lt; 4 &lt; 4\                     3 :  9456 (19.5%)\    III \                                          
-##                                                                                       IQR (CV) : 1 (0.3)             4 : 28503 (58.6%)     IIIIIIIIIII                                    
-## 
-## 19   V48\                                   Q44 Political self-placement: Left -      Mean (sd) : 5.3 (2.4)\         11 distinct values    \ \ \ \ \ \ \ \ :\         40805\     9002\    
-##      [haven_labelled, vctrs_vctr, double]   Right                                     min &lt; med &lt; max:\                                    \ \ \ \ \ \ \ \ :\         (81.9%)    (18.1%)  
-##                                                                                       0 &lt; 5 &lt; 10\                                          \ \ \ \ \ \ \ \ :\                             
-##                                                                                       IQR (CV) : 3 (0.5)                                   \ \ \ \ . . : . : .\                           
-##                                                                                                                                            : : : : : : : : . :                            
-## 
-## 20   ISCO08\                                Occupation ISCO/ ILO 2008                 Mean (sd) : 4350.8 (2828.9)\   583 distinct values   \ \ \ \ : \ \ \ \ :\       47384\     2423\    
-##      [haven_labelled, vctrs_vctr, double]                                             min &lt; med &lt; max:\                                    . \ \ : : \ \ :\           (95.1%)    (4.9%)   
-##                                                                                       0 &lt; 4120 &lt; 9629\                                     : . : : . : \ \ : \ \ :\                       
-##                                                                                       IQR (CV) : 4782 (0.7)                                : : : : : : \ \ : : :\                         
-##                                                                                                                                            : : : : : : : : : :                            
-## ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------</code></pre>
 </div>
 <div id="models" class="section level2">
 <h2>Models</h2>
