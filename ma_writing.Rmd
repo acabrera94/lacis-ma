@@ -1,0 +1,17 @@
+---
+title: "Master's in Latin American, Caribbean and Iberian Studies"
+author: "Álvaro C."
+date: "`r Sys.Date()`"
+output: html_document
+bibliography: references.bib
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Introduction
+
+Social movement studies have a long-standing tradition of studying conflict, social change, and [@mcadam2004]
+
+# References
