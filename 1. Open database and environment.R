@@ -60,7 +60,7 @@ db<-select(db,
 sjlabelled::get_label(db) #Vemos los labels
 summarytools::dfSummary(db, plain.ascii = FALSE)
 view(dfSummary(db, headings=FALSE))
-summarytools::descr(db, )
+
 
 ####  4.1 Frecuencia de variables (Solo si ex necesario)
 frq(db$NEMPLOY) 
@@ -87,7 +87,7 @@ recoding_specs <- list(
   V27 = c(8, 9),
   V28 = c(8, 9),
   V48 = c(98, 99),
-  ISCO08= c(9998, 9999))
+  ISCO08= c(0, 9998, 9999, 0110, 0210, 0310))
 
 for (var in names(recoding_specs)) {
   if (!is.null(recoding_specs[[var]])) {
@@ -98,7 +98,10 @@ for (var in names(recoding_specs)) {
 
 
 
-
+####  4. Resumen de datos ####
+sjlabelled::get_label(db) #Vemos los labels
+summarytools::dfSummary(db, plain.ascii = FALSE)
+view(dfSummary(db, headings=FALSE))
 
 
 

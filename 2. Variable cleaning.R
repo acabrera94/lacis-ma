@@ -17,7 +17,7 @@
 ## 6.1 Construcción de variable Clase Social (Erik Wright)
 
 #Construcción de autoempleado
-db$auto_emp <- ifelse(db$EMPREL == 1, 2, 1) # 5 = 1 (autoempleado), else = 2
+db$auto_emp <- ifelse(db$EMPREL == 1, 2, 1) #f value 1 (employee) then the value is 2, if not (self-employee), the value is 1.
 frq(db$auto_emp) 
 
 #Construcción de credencial ## DE MOMENTO: AQUELLOS QUE SE SALEN QUEDAN COMO NO CREDENCIALIZADOS
@@ -26,10 +26,36 @@ db$credencial <- car::recode(db$DEGREE,
 
 frq(db$credencial)
 
+#Construcción de variable "skills_2digit"
+db$skills_2digit <- car::recode(db$ISCO08,
+                             "1000:1120=11; 1200:1223=12; 1300:1349=13;
+                         1400:1439=14; 2100:2166=21; 2200:2269=22; 2300:2359=23;
+                         2400:2434=24; 2500:2529=25; 2600:2659=26; 3100:3155=31;
+                         3200:3259=32; 3300:3359=33; 3400:3435=34; 3500:3522=35;
+                         4100:4132=41; 4200:4229=42; 4300:4323=43; 4400:4419=44;
+                         5100:5169=51; 5200:5249=52; 5300:5329=53; 5400:5419=54;
+                         6100:6130=61; 6200:6224=62; 6300:6340=63; 7100:7133=71; 
+                         7200:7234=72; 7300:7323=73; 7400:7422=74; 7500:7549=75;
+                             8100:8189=81; 8200:8219=82; 8300:8350=83; 9100:9129=91;
+                             9200:9216=92; 9300:9334=93; 9400:9412=94; 9500:9520=95;
+                             9600:9629=96")
+
+frq(db$skills_2digit)
+
+
+#Construcción de variable "skills_2digit"
+db$skills_1digit <- car::recode(db$ISCO08,
+                                "1000:1439=1; 2000:2659=2; 3000:3522=3; 4000:4419=4; 5000:5419=5;
+                                6000:6340=6; 7000:7549=7; 8000:8350=8; 9000:9629=9")
+
+frq(db$skills_1digit)
+
+
+
 
 #Construcción de num_empleados
 db$num_empleados <- car::recode(db$NEMPLOY,
-                                "1:2=1; 3:10=2; 11:6000=3")
+                                "1:9=1; 10:6000=2; 0=3")
 
 frq(db$num_empleados)
 

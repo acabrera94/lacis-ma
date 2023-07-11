@@ -14,13 +14,20 @@
 
 #### Summary descriptive tables ####
 
+## 1. Desciptives
+
+
+## 2. Box plots
+
+
+## 3. 
 
 
 
+########### 3.1 Multivariate Analysis #############
 
 
-
-#.1 Análisis exploratorio y conversción en factor
+#### Análisis exploratorio y conversción en factor
 tab_xtab(var.row = db$css,db$acc,show.cell.prc = T,show.summary = F) #Tabla de contingencia de variable de interés
 
 #Pasamos a factor para regresión
