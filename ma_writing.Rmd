@@ -17,13 +17,23 @@ Social movement studies have a long-standing tradition of studying conflict, soc
 # Methodology
 
 ## Data
+
+This article uses a quantitative methodology. Based upon the [Social Survey Programme 2014 - Citizenship II (ISSP)](https://www.gesis.org/en/issp/modules/issp-modules-by-topic/citizenship/2014)[^1],
+
+[^1]: By the time this article has been written, another wave of the same thematic survey is under.
+
+## Methodology
+
+The hypotheses that led this study were tested using Multivariate Linear Regressions (MLR). As the literature says [@angrist2009; @chatterjee2006; @angrist2014], Linear Models are appropriate when we seek [....]. In this case, since we are testing the effect that class structure has on the working class participation in collective action activities, other models that provide a better understanding of probability, such as Logistic and Logit, aren't required. To put it in other words, since we are not measuring the *probability* that the working class has to undertake collective action activities but the *influence* that class structure itself has on
+
+## Analysis
+
 ### Descriptives
 
-
-## Models
+### Models
 
 # Discussion
 
-## Conclusions
+# Conclusions
 
 # References

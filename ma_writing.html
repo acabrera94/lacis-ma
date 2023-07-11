@@ -391,210 +391,63 @@ with the recent protests located in the Global North have shown that</p>
 <h1>Methodology</h1>
 <div id="data" class="section level2">
 <h2>Data</h2>
+<p>This article uses a quantitative methodology. Based upon the <a href="https://www.gesis.org/en/issp/modules/issp-modules-by-topic/citizenship/2014">Social
+Survey Programme 2014 - Citizenship II (ISSP)</a><a href="#fn1" class="footnote-ref" id="fnref1"><sup>1</sup></a>,</p>
+</div>
+<div id="methodology-1" class="section level2">
+<h2>Methodology</h2>
+<p>The hypotheses that led this study were tested using Multivariate
+Linear Regressions (MLR). As the literature says <span class="citation">(Angrist and Pischke 2009, 2014; Chatterjee and Hadi
+2006)</span>, Linear Models are appropriate when we seek [….]. In this
+case, since we are testing the effect that class structure has on the
+working class’ participation in collective action activities, other
+models that provide a better understanding of probability, such as
+Logistic and Logit, aren’t required.</p>
+</div>
+<div id="analysis" class="section level2">
+<h2>Analysis</h2>
 <div id="descriptives" class="section level3">
 <h3>Descriptives</h3>
-<pre class="r"><code>source(&quot;C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/code.R&quot;)</code></pre>
-<pre><code>## Warning: package &#39;pacman&#39; was built under R version 4.2.3</code></pre>
-<pre><code>## Warning in model.response(mf, &quot;numeric&quot;): using type = &quot;numeric&quot; with a factor
-## response will be ignored</code></pre>
-<pre><code>## Warning in Ops.factor(y, z$residuals): &#39;-&#39; not meaningful for factors</code></pre>
-<pre><code>## Warning in model.response(mf, &quot;numeric&quot;): using type = &quot;numeric&quot; with a factor
-## response will be ignored</code></pre>
-<pre><code>## Warning in Ops.factor(y, z$residuals): &#39;-&#39; not meaningful for factors</code></pre>
-<pre><code>## Warning in model.response(mf, &quot;numeric&quot;): using type = &quot;numeric&quot; with a factor
-## response will be ignored</code></pre>
-<pre><code>## Warning in Ops.factor(y, z$residuals): &#39;-&#39; not meaningful for factors</code></pre>
-<pre><code>## Warning in model.response(mf, &quot;numeric&quot;): using type = &quot;numeric&quot; with a factor
-## response will be ignored</code></pre>
-<pre><code>## Warning in Ops.factor(y, z$residuals): &#39;-&#39; not meaningful for factors</code></pre>
-<pre class="r"><code>print(t1)</code></pre>
 </div>
-<div id="data-frame-summary" class="section level3">
-<h3>Data Frame Summary</h3>
-<div id="db2" class="section level4">
-<h4>db2</h4>
-<p><strong>Dimensions:</strong> 49807 x 6<br />
-<strong>Duplicates:</strong> 22926</p>
-<table>
-<colgroup>
-<col width="2%" />
-<col width="22%" />
-<col width="22%" />
-<col width="15%" />
-<col width="12%" />
-<col width="11%" />
-<col width="6%" />
-<col width="6%" />
-</colgroup>
-<thead>
-<tr class="header">
-<th align="left">No</th>
-<th align="left">Variable</th>
-<th align="left">Label</th>
-<th align="left">Stats / Values</th>
-<th align="left">Freqs (% of Valid)</th>
-<th align="left">Graph</th>
-<th align="left">Valid</th>
-<th align="left">Missing</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="left">1</td>
-<td align="left">SEX<br />
-[haven_labelled, vctrs_vctr, double]</td>
-<td align="left">Sex of Respondent</td>
-<td align="left">Min : 1<br />
-Mean : 1.5<br />
-Max : 2</td>
-<td align="left">1 : 23224 (46.7%)<br />
-2 : 26559 (53.3%)</td>
-<td align="left">IIIIIIIII<br />
-IIIIIIIIII</td>
-<td align="left">49783<br />
-(100.0%)</td>
-<td align="left">24<br />
-(0.0%)</td>
-</tr>
-<tr class="even">
-<td align="left">2</td>
-<td align="left">AGE<br />
-[haven_labelled, vctrs_vctr, double]</td>
-<td align="left">Age of respondent</td>
-<td align="left">Mean (sd) : 48.1 (17.7)<br />
-min &lt; med &lt; max:<br />
-15 &lt; 48 &lt; 102<br />
-IQR (CV) : 29 (0.4)</td>
-<td align="left">87 distinct values</td>
-<td align="left">  . : . : .<br />
-  : : : : :<br />
-. : : : : : :<br />
-: : : : : : : .<br />
-: : : : : : : : .</td>
-<td align="left">49669<br />
-(99.7%)</td>
-<td align="left">138<br />
-(0.3%)</td>
-</tr>
-<tr class="odd">
-<td align="left">3</td>
-<td align="left">acc<br />
-[numeric]</td>
-<td align="left"></td>
-<td align="left">Mean (sd) : 1.3 (1.3)<br />
-min &lt; med &lt; max:<br />
-0 &lt; 1 &lt; 4<br />
-IQR (CV) : 2 (1)</td>
-<td align="left">0 : 17265 (38.3%)<br />
-1 : 10327 (22.9%)<br />
-2 : 7983 (17.7%)<br />
-3 : 6014 (13.3%)<br />
-4 : 3498 ( 7.8%)</td>
-<td align="left">IIIIIII<br />
-IIII<br />
-III<br />
-II<br />
-I</td>
-<td align="left">45087<br />
-(90.5%)</td>
-<td align="left">4720<br />
-(9.5%)</td>
-</tr>
-<tr class="even">
-<td align="left">4</td>
-<td align="left">pos_pol<br />
-[haven_labelled, vctrs_vctr, double]</td>
-<td align="left">Q44 Political self-placement: Left - Right</td>
-<td align="left">Mean (sd) : 2.1 (0.8)<br />
-min &lt; med &lt; max:<br />
-1 &lt; 2 &lt; 3<br />
-IQR (CV) : 2 (0.4)</td>
-<td align="left">1 : 12462 (30.5%)<br />
-2 : 12295 (30.1%)<br />
-3 : 16048 (39.3%)</td>
-<td align="left">IIIIII<br />
-IIIIII<br />
-IIIIIII</td>
-<td align="left">40805<br />
-(81.9%)</td>
-<td align="left">9002<br />
-(18.1%)</td>
-</tr>
-<tr class="odd">
-<td align="left">5</td>
-<td align="left">css<br />
-[numeric]</td>
-<td align="left"></td>
-<td align="left">Mean (sd) : 5.8 (2.4)<br />
-min &lt; med &lt; max:<br />
-1 &lt; 6 &lt; 9<br />
-IQR (CV) : 5 (0.4)</td>
-<td align="left">1 : 328 ( 1.3%)<br />
-2 : 1152 ( 4.6%)<br />
-3 : 5113 (20.3%)<br />
-4 : 2595 (10.3%)<br />
-5 : 3380 (13.4%)<br />
-6 : 1848 ( 7.3%)<br />
-7 : 3455 (13.7%)<br />
-8 : 1053 ( 4.2%)<br />
-9 : 6231 (24.8%)</td>
-<td align="left"><br />
-<br />
-IIII<br />
-II<br />
-II<br />
-I<br />
-II<br />
-<br />
-IIII</td>
-<td align="left">25155<br />
-(50.5%)</td>
-<td align="left">24652<br />
-(49.5%)</td>
-</tr>
-<tr class="even">
-<td align="left">6</td>
-<td align="left">cs_sub<br />
-[haven_labelled, vctrs_vctr, double]</td>
-<td align="left">Top-Bottom self-placement</td>
-<td align="left">Mean (sd) : 2 (0.7)<br />
-min &lt; med &lt; max:<br />
-1 &lt; 2 &lt; 3<br />
-IQR (CV) : 2 (0.4)</td>
-<td align="left">1 : 11940 (26.4%)<br />
-2 : 20312 (44.9%)<br />
-3 : 13018 (28.8%)</td>
-<td align="left">IIIII<br />
-IIIIIIII<br />
-IIIII</td>
-<td align="left">45270<br />
-(90.9%)</td>
-<td align="left">4537<br />
-(9.1%)</td>
-</tr>
-</tbody>
-</table>
+<div id="models" class="section level3">
+<h3>Models</h3>
 </div>
-</div>
-</div>
-<div id="models" class="section level2">
-<h2>Models</h2>
 </div>
 </div>
 <div id="discussion" class="section level1">
 <h1>Discussion</h1>
-<div id="conclusions" class="section level2">
-<h2>Conclusions</h2>
 </div>
+<div id="conclusions" class="section level1">
+<h1>Conclusions</h1>
 </div>
 <div id="references" class="section level1 unnumbered">
 <h1 class="unnumbered">References</h1>
 <div id="refs" class="references csl-bib-body hanging-indent">
+<div id="ref-angrist2009" class="csl-entry">
+Angrist, Joshua D, and Jörn-Steffen Pischke. 2009. <em>Mostly Harmless
+Econometrics: An Empiricist’s Companion</em>. Princeton university
+press.
+</div>
+<div id="ref-angrist2014" class="csl-entry">
+———. 2014. <em>Mastering’metrics: The Path from Cause to Effect</em>.
+Princeton university press.
+</div>
+<div id="ref-chatterjee2006" class="csl-entry">
+Chatterjee, Samprit, and Ali S Hadi. 2006. <em>Regression Analysis by
+Example</em>. John Wiley &amp; Sons.
+</div>
 <div id="ref-mcadam2004" class="csl-entry">
 McAdam, Doug, Sidney Tarrow, and Charles Tilly. 2004. <em>Dynamics of
 Contention</em>. Cambridge University Press.
 </div>
 </div>
+</div>
+<div class="footnotes footnotes-end-of-document">
+<hr />
+<ol>
+<li id="fn1"><p>By the time this article has been written, another wave
+of the same thematic survey is under.<a href="#fnref1" class="footnote-back">↩︎</a></p></li>
+</ol>
 </div>
 
 
