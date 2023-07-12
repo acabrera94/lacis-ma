@@ -20,30 +20,59 @@ bibliography: references.bib
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
+
+```{=html}
 <style>
 body {
   text-align: justify;
 }
 </style>
-
+```
 # Writing recordatory
 
-1. Paragrpah main idea
-2. Examples
-3. Sum
+1.  Paragrpah main idea
+2.  Examples
+3.  Sum
 
 # Introduction
 
-Social movement studies have a long-standing tradition of studying conflict, social change, and what some scholars contentious politics [@mcadam2004]. However, with the recent protests located in the Global North have shown that
+Social movement studies have a long-standing tradition of studying conflict, social change, and what some scholars contentious politics [@mcadam2004].
+
+However, with the recent protests located in the Global North have shown that
 
 # Social Movements, Capitalism, and Class
 
 ## Social movements classic research agenda
 
+[@tarrow1996]
+
+[@mcadam1999]
+
+[@mcadam2004]
+
 ## (Re)turning to capitalism
+
+[@giugni2016]
+
+[@arce2007; @bellinger2011]
+
+[@rossi2022]
+
+[@stanley2013]
+
+[@dellaporta2017]
+
+[@cini2017]
 
 ## Class and Social movements
 
+[@eder2013]
+
+[@eidlin2018]
+
+[@hellinger2020]
+
+[@therborn2012]
 
 # Methodology
 
@@ -57,12 +86,9 @@ This article uses a quantitative methodology based on the [Social Survey Program
 
 [^3]: According to the ISSP, the exceptions were countries such as Finland, were individuals between 15 and 75 were surveyed, Japan, were 16 years old and older were surveyed, South Africa, were the respondents were 16 years or more, and Sweden, were the individuals were between 17 and 79 years old.
 
-
 ## Methods
 
 The hypotheses that led this study were tested using Multivariate Linear Regressions (MLR). As the literature says [@angrist2009; @chatterjee2006; @angrist2014], Linear Models are appropriate when we seek [....]. In this case, since we are testing the effect that class structure has on the working class participation in collective action activities, other models that provide a better understanding of probability, such as Logistic and Logit, aren't required. To put it in other words, since we are not measuring the *probability* that the working class has to undertake collective action activities but the *influence* that class structure itself has on
-
-
 
 # Analysis
 
@@ -75,7 +101,6 @@ The hypotheses that led this study were tested using Multivariate Linear Regress
 ## Models
 
 1
-
 
 # Discussion
 
