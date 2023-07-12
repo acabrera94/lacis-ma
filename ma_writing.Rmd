@@ -2,35 +2,67 @@
 title: "Master's in Latin American, Caribbean and Iberian Studies"
 author: "Álvaro C."
 date: "`r Sys.Date()`"
-output: html_document
+output:
+  html_document:
+    self-contained: yes
+    toc: yes
+    toc_float:
+      collapsed: no
+      smooth_scrool: no
+    number_sections: yes
+  pdf_document:
+    toc: yes
+  word_document:
+    toc: yes
 bibliography: references.bib
 ---
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 ```
+<style>
+body {
+  text-align: justify;
+}
+</style>
+
 
 # Introduction
 
 Social movement studies have a long-standing tradition of studying conflict, social change, and what some scholars contentious politics [@mcadam2004]. However, with the recent protests located in the Global North have shown that
 
+
 # Methodology
 
 ## Data
 
-This article uses a quantitative methodology. Based upon the [Social Survey Programme 2014 - Citizenship II (ISSP)](https://www.gesis.org/en/issp/modules/issp-modules-by-topic/citizenship/2014)[^1],
+This article uses a quantitative methodology based on the [Social Survey Programme 2014 - Citizenship II (ISSP)](https://www.gesis.org/en/issp/modules/issp-modules-by-topic/citizenship/2014)[^1] (N = 49.087). This dataset applies a similar[^2] questionnaire in every country in which it is applied. The sampling procedure differs for each country: in some countries, partly simple random samples were applied, whereas in others, partly multistage stratified random samples. The data was collected in two ways. The first one was through interviews (face-to-face, Computer Assisted Personal interviews, or completed on the telephone) or Self-administered questionnaires (Computer Assisted self-interviews or Computer-Assisted web interviews). The analysis is mostly applied to individuals that are 18 years or more with some exceptions[^3]. After processing the dataset, the sample was reduced to 33.582 individuals nested in 34 countries.
 
-[^1]: By the time this article has been written, another wave of the same thematic survey is under.
+[^1]: By the time this article has been written, another wave of the same thematic survey is under development and expected to fully realese in 2025.
 
-## Methodology
+[^2]: It is a similar questionary because the survey don't apply the exact same questions in every country. However, the questions are prepared to grasp and collect the same dimensions for every question applied.
+
+[^3]: According to the ISSP, the exceptions were countries such as Finland, were individuals between 15 and 75 were surveyed, Japan, were 16 years old and older were surveyed, South Africa, were the respondents were 16 years or more, and Sweden, were the individuals were between 17 and 79 years old.
+
+
+## Methods
 
 The hypotheses that led this study were tested using Multivariate Linear Regressions (MLR). As the literature says [@angrist2009; @chatterjee2006; @angrist2014], Linear Models are appropriate when we seek [....]. In this case, since we are testing the effect that class structure has on the working class participation in collective action activities, other models that provide a better understanding of probability, such as Logistic and Logit, aren't required. To put it in other words, since we are not measuring the *probability* that the working class has to undertake collective action activities but the *influence* that class structure itself has on
 
-## Analysis
 
-### Descriptives
 
-### Models
+# Analysis
+
+1
+
+## Descriptives
+
+1
+
+## Models
+
+1
+
 
 # Discussion
 
