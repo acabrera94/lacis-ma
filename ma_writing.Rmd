@@ -26,10 +26,23 @@ body {
 }
 </style>
 
+# Writing recordatory
+
+1. Paragrpah main idea
+2. Examples
+3. Sum
 
 # Introduction
 
 Social movement studies have a long-standing tradition of studying conflict, social change, and what some scholars contentious politics [@mcadam2004]. However, with the recent protests located in the Global North have shown that
+
+# Social Movements, Capitalism, and Class
+
+## Social movements classic research agenda
+
+## (Re)turning to capitalism
+
+## Class and Social movements
 
 
 # Methodology
