@@ -15,6 +15,8 @@ output:
   word_document:
     toc: yes
 bibliography: references.bib
+csl: apa7.csl
+link-citations: true
 ---
 
 ```{r setup, include=FALSE}
@@ -42,7 +44,7 @@ However, with the recent protests located in the Global North have shown that
 
 # Social Movements, Capitalism, and Class
 
-## Social movements classic research agenda
+## Social Movement classic research agenda
 
 [@tarrow1996]
 
@@ -50,7 +52,17 @@ However, with the recent protests located in the Global North have shown that
 
 [@mcadam2004]
 
-## (Re)turning to capitalism
+[@gamson1996]
+
+[@benford2000]
+
+[@snow1986]
+
+[@goodwin2001]
+
+[@tarrow2011]
+
+## (Re)turning to Capitalism
 
 [@giugni2016]
 
@@ -60,11 +72,11 @@ However, with the recent protests located in the Global North have shown that
 
 [@stanley2013]
 
-[@dellaporta2017]
+[@dellaporta2015a]
 
-[@cini2017]
+[@dellaporta2017c]
 
-## Class and Social movements
+## Class and Social Movements
 
 [@eder2013]
 
