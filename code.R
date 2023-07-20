@@ -15,7 +15,8 @@ pacman::p_load(tidyverse,
                foreign,
                coefplot,
                fastDummies,
-               knitr)
+               knitr,
+               dcolumn)
 
 rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
 options(scipen=999) # valores sin notación científica
@@ -326,9 +327,19 @@ sjPlot::tab_model(list(reg1, reg2, reg3, reg4), show.ci=FALSE, p.style = "stars"
                   dv.labels = c("Modelo 1", "Modelo 2", "Modelo 3", "Modelo 4"))
 
 
+#. Visualización
 
 
+# Step 4: Create the stargazer table
+stargazer(reg1, reg2, title = "Regression Results", align = TRUE, type = "html")
 
+# Alternatively, you can create the table and save it as a LaTeX or HTML table for further use.
+# For LaTeX:
+# stargazer(model1, model2, title = "Regression Results", align = TRUE, out = "regression_table.tex")
 
+# For HTML:
+stargazer(reg1, reg2, reg3, reg4, title = "Regression Results", align = TRUE)
 
+stargazer(reg1 = "Regression Results", align = TRUE, type = "text")
 
+stargazer(reg1, type = "html")
