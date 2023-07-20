@@ -10,10 +10,6 @@ output:
       collapsed: no
       smooth_scrool: no
     number_sections: yes
-  pdf_document:
-    toc: yes
-  word_document:
-    toc: yes
 bibliography: references.bib
 csl: apa7.csl
 link-citations: true
@@ -50,8 +46,7 @@ pacman::p_load(tidyverse,
                foreign,
                coefplot,
                fastDummies,
-               knitr,
-               dcolumn)
+               knitr)
 
 rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
 options(scipen=999) # valores sin notación científica
@@ -396,7 +391,26 @@ reg4<-lm(acc ~ css+cs_sub2+pos_pol2+AGE+sex, data = db)
 #. Visualización
 
 library(stargazer)
-stargazer(reg1, type = "html")
+stargazer(
+  reg1, reg2, reg3, reg4,
+  type = "html",
+  colnames = FALSE,
+  model.numbers = FALSE,
+  dep.var.caption = " ",
+  dep.var.labels = "ACC",
+  covariate.labels = c("Pequeño empleador",
+                               "Pequeña Burguesía",
+                               "Directivo/Supervisor Experto",
+                               "Experto no directivo",
+                               "Directivo/Supervisor semi-credencializado",
+                               "Obrero semi-credencializado",
+                               "Directivo/Supervisor no credencializado",
+                               "Proletario tradicional",
+                       "Clase Subjetiva Media", "Clase Subjetiva Baja",
+                       "Centro", "Derecha", "Edad", "Sexo"),
+  keep.stat = c("rsq", "f"),
+  notes.align = "l"
+  )
 
 ```
 
