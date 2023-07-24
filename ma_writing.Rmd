@@ -3,6 +3,9 @@ title: "Master's in Latin American, Caribbean and Iberian Studies"
 author: "Álvaro C."
 date: "`r Sys.Date()`"
 output:
+  word_document:
+    toc: yes
+    number_sections: yes
   html_document:
     self-contained: yes
     toc: yes
@@ -12,7 +15,7 @@ output:
     number_sections: yes
 bibliography: references.bib
 csl: apa7.csl
-link-citations: true
+link-citations: yes
 ---
 
 ```{r setup, include=FALSE}
@@ -28,35 +31,6 @@ body {
 </style>
 ```
 
-
-```{r main code, message=FALSE, warning=FALSE, include=FALSE}
-############## PARTE 1 #############
-# 1. Peparamos ambiente de trabajo ####
-library(pacman)
-pacman::p_load(tidyverse,
-               haven,
-               magrittr,
-               sjPlot,
-               sjmisc,
-               sjlabelled,
-               stargazer,
-               summarytools,
-               expss,
-               car,
-               foreign,
-               coefplot,
-               fastDummies,
-               knitr,
-               dcolumn)
-
-rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
-options(scipen=999) # valores sin notación científica
-
-
-# 2. Abrimos dataset ####
-load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/base/db.RData")
-
-```
 
 # Writing recordatory
 
@@ -139,6 +113,33 @@ As the literature says [@angrist2009; @chatterjee2006; @angrist2014; @huntington
 1
 
 ## Descriptives
+```{r main code, message=FALSE, warning=FALSE, include=FALSE}
+############## PARTE 1 #############
+# 1. Peparamos ambiente de trabajo ####
+library(pacman)
+pacman::p_load(tidyverse,
+               haven,
+               magrittr,
+               sjPlot,
+               sjmisc,
+               sjlabelled,
+               stargazer,
+               summarytools,
+               expss,
+               car,
+               foreign,
+               coefplot,
+               fastDummies,
+               knitr)
+
+rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
+options(scipen=999) # valores sin notación científica
+
+
+# 2. Abrimos dataset ####
+load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/base/db.RData")
+
+```
 
 1
 
