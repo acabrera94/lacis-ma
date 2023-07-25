@@ -1,6 +1,9 @@
 
 ############## PARTE 1 #############
 # 1. Peparamos ambiente de trabajo ####
+tinytex::install_tinytex()
+
+install.packages("pacman")
 library(pacman)
 pacman::p_load(tidyverse,
                haven,
@@ -10,20 +13,20 @@ pacman::p_load(tidyverse,
                sjlabelled,
                stargazer,
                summarytools,
-               expss,
                car,
                foreign,
-               coefplot,
-               fastDummies,
+               openxlsx,
                knitr,
-               dcolumn)
+               tinytex,
+               kableExtra,
+               xtable)
 
 rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
 options(scipen=999) # valores sin notación científica
 
 
 # 2. Abrimos dataset ####
-setwd("C:/Users/Alvaro C/Dropbox/1. Escritos/1. Artículos/1 2023_Estallido Social, malestar material y protesta")
+setwd("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA")
 #setwd("C:/Users/alvar/Dropbox/1. Escritos/1. Artículos/1 2023_Estallido Social, malestar material y protesta")
 
 db<-read_dta("C:/Users/Alvaro C/Dropbox/Statistic/Data/Datasets/ISSP/ISSP 2014 - Citizenship II - No. 6670/ISSP_2014_CITZENSHIP.dta")
@@ -68,6 +71,9 @@ db<-select(db,
 ##4.1 Frecuencia de variables (Solo si ex necesario)
 frq(db$NEMPLOY) 
 
+
+
+
 # 5. Eliminamos NA ####
 
 recoding_specs <- list(
@@ -101,7 +107,6 @@ for (var in names(recoding_specs)) {
 }
 
 
-
 # 6. Resumen de datos ####
 #sjlabelled::get_label(db) #Vemos los labels
 #summarytools::dfSummary(db, plain.ascii = FALSE)
@@ -111,12 +116,7 @@ for (var in names(recoding_specs)) {
 
 ############## PARTE 2 #############
 
-
-
-
-# 1. Construccion de variable####
-
-## 1.1 Construcción de variable Clase Social (Erik Wright)
+# 1. Preámbulo Clase Social ####
 
 #Construcción de autoempleado
 db$auto_emp <- ifelse(db$EMPREL == 1, 2, 1) #f value 1 (employee) then the value is 2, if not (self-employee), the value is 1.
@@ -153,11 +153,6 @@ db$skills <- car::recode(db$skills_2digit,
 frq(db$skills)
 #Construcción de variable "skills_2digit"
 
-frq(db$skills_1digit)
-
-
-
-
 
 #Construcción de num_empleados
 db$num_empleados <- car::recode(db$NEMPLOY,
@@ -166,14 +161,17 @@ db$num_empleados <- car::recode(db$NEMPLOY,
 frq(db$num_empleados)
 
 
-#Construcción de participa de unions o 
+#Construcción de participa de unions o sindocatos
 db$unionized <- car::recode(db$UNION,
                                 "1:2=1; 3:4=0")
+#Labels
+db$unionized <- set_labels(db$unionized,
+                           labels=c("Have participated in unions"=1,
+                                    "Haven't participated in unions"=0)) #Unions 
 
 
 
-
-#Construcción de Clase Social
+# 2. Construcción Clase Social (E. Wright) ####
 db$css <- NA
 
 # Condition 1: Burguesía tradicional (Value: 1)
@@ -203,51 +201,81 @@ db$css[db$auto_emp == 2 & db$WRKSUP == 1 & db$skills == 3] <- 8
 # Condition 9: Proletariado tradicional (Value: 9)
 db$css[db$auto_emp == 2 & db$WRKSUP == 2 & db$skills == 3] <- 9
 
+
+#Aplicamos labels a la variable
+db$css <- set_label(x = db$css,label = "Social Class")
+
+get_label(db$css)
+
+#Aplicamos labels valores
+db$css <- set_labels(db$css,
+                     labels=c( "Burguesía tradicional"=1,
+                               "Pequeño empleador"=2,
+                               "Pequeña Burguesía"=3,
+                               "Directivo/Supervisor Experto"=4,
+                               "Experto no directivo"=5,
+                               "Directivo/Supervisor semi-credencializado"=6,
+                               "Obrero semi-credencializado"=7,
+                               "Directivo/Supervisor no credencializado"=8,
+                               "Proletario tradicional"=9)) #Clase Social
+
 frq(db$css)
 
 
 
 
-## 6.2 Construcción de variables de control
+# 3. Variables de control ####
 
+## 3.1 Clase Social subjetiva ####
 
-
-#Clase Social subjetiva
 db$cs_sub <- car::recode(db$TOPBOT,
                          "1:4=2; 5:6=1; 7:10=0") # 2= WK-Class / 2=Middle Groups / 0=Upper Class
 
+#Inclumimos labels
+db$cs_sub <- set_labels(db$cs_sub,
+                        labels=c("Clase Subjetiva baja"=2, "Clase Subjetiva Media"=3,
+                                 "Clase Subjetiva Alta"=0)) #Clase Social Subjetiva
 frq(db$cs_sub) 
 
 
-
-## Construcción variable working class else = wk_else
+## 3.2 Construcción variable working class else = wk_else ####
 db$wk_else <- car::recode(db$css,
                           "1:6=0; 7:9=1") #0 = Not working class / 1= Working class 
 
-## Construcción variable: correctly class identity (correct_ci)
+## 3.3 Construcción variable: correctly class identity (correct_ci) ####
 db$correct_ci <- NA
-
 # Con comando ifelse -> 1 = correct_class_identity / 0 = incorrect_class_identity
 db$correct_ci<- ifelse(db$wk_else == 1 & db$cs_sub == 2, 1,
                        ifelse(db$wk_else == 1 & db$cs_sub %in% c(0, 1), 0, NA))
+#Incluimos labels
+db$correct_ci <- set_labels(db$correct_ci,
+                            labels=c("Corresponding Class Identity"=1,
+                                     "Not corresponding Class Identity" = 0)) #Correct Class identity
 
-
-#Posición Política
+## 3.4 Posición Política ####
 db$pos_pol <- car::recode(db$V48,
                           "0:4=1; 5=2; 6:10=3")
-
+#Incluimos labels
+db$pos_pol <- set_labels(db$pos_pol,
+                         labels=c("Izquierda"=1, "Centro"=2,
+                                  "Derecha"=3)) #Posición Política
 frq(db$pos_pol) 
 
 
-
-# Situación marital
+## 3.5 Situación Marital ####
 db$partner <- car::recode(db$PARTLIV,
                           "1:2=1; 3=0")
+#Incluimos labels
+db$partner <- set_labels(db$partner,
+                         labels=c("In partnership"=1,
+                                  "Not in partnership"=0)) #Partnership
 
 
+# 4. Construcción de variable acción colectiva (sumatoria) ####
 
-# Construcción de variable acción colectiva (sumatoria)
-#Loop that recodes, 1:2 = 1 (Yes), 3:4 = 2 (No)
+## 4.1 Loop that recodes, 1:2 = 1 (Yes), 3:4 = 2 (No) ####
+
+
 variables <- c("V17", "V18", "V19", "V22")  # List of variables to recode
 
 for (var in variables) {
@@ -264,101 +292,47 @@ variables <- variables <- c("V17", "V18", "V19", "V22")
 db <- replace_values(db, variables)
 
 
-#Segundo: Sumatoria
+## 4.2 Segunda Sumatoria ####
+
 # Create a new variable named 'new_variable' as the summation of other variables
 db$acc <- rowSums(db[, c("V17", "V18", "V19", "V22")])
 
+#Labels para sumatoria
+#Aplicamos labels a la variable
+db$acc <- set_label(x = db$acc,label = "Collective Action Participation")
 
-#Construcción de acc2
+
+
+## 4.3 Construcción de acc2 ####
 db$acc2 <- car::recode(db$acc,
                        "0=0; 1:16=1")
-
+db$acc2 <- set_label(x = db$acc2,label = "Dummy Collective Action")
 frq(db$acc2)
 
 
 
+
+
+
+
+
+# 5. Asimilamos al n de css ####
+
+#Filtrar la base de datos para mantener solo las filas donde "clase_social" no sea NA
+db <- db %>%
+  filter(!is.na(css))
+
+
+
 ############## PARTE 3 #############
-db$css <- set_labels(db$css,
-                     labels=c( "Burguesía tradicional"=1,
-                               "Pequeño empleador"=2,
-                               "Pequeña Burguesía"=3,
-                               "Directivo/Supervisor Experto"=4,
-                               "Experto no directivo"=5,
-                               "Directivo/Supervisor semi-credencializado"=6,
-                               "Obrero semi-credencializado"=7,
-                               "Directivo/Supervisor no credencializado"=8,
-                               "Proletario tradicional"=9)) #Clase Social
-
-db$cs_sub <- set_labels(db$cs_sub,
-                        labels=c("Clase Subjetiva baja"=2, "Clase Subjetiva Media"=3,
-                                 "Clase Subjetiva Alta"=0)) #Clase Social Subjetiva
 
 
-db$pos_pol <- set_labels(db$pos_pol,
-                         labels=c("Izquierda"=1, "Centro"=2,
-                                  "Derecha"=3)) #Posición Política
+# 1. Multivariate Analysis ####
 
 
-db$correct_ci <- set_labels(db$correct_ci,
-                         labels=c("Corresponding Class Identity"=1,
-                                  "Not corresponding Class Identity" = 0)) #Correct Class identity
+## 1.1 Análisis exploratorio y conversción en factor ####
 
-db$unionized <- set_labels(db$unionized,
-                            labels=c("Have participated in unions"=1,
-                                     "Haven't participated in unions"=0)) #Unionizedorrect Class identityC
-
-db$partner <- set_labels(db$partner,
-                           labels=c("In partnership"=1,
-                                    "Not in partnership"=0)) #Partnership
-
-
-
-
-#Seleccionamos otra bdd
-db2<-select(db,
-            SEX,
-            AGE,
-            acc,
-            pos_pol,
-            css,
-            cs_sub)
-
-
-
-# Export Data base
-
-# Set the folder path
-folder_path <- "C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/base"
-
-# Create the folder if it doesn't exist
-if (!dir.exists(folder_path)) {
-  dir.create(folder_path, recursive = TRUE)
-}
-
-# Replace 'your_data' with the name of your database object
-save(db, file = paste0(folder_path, "/db.RData"))
-
-
-# Load the data from the RData file
-#load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/base/db.RData")
-
-
-
-
-############## PARTE 4 #############
-
-
-#### Summary descriptive tables ####
-
-## 1. Descriptives
-plot_frq(db2$css)
-  
-########### 3.1 Multivariate Analysis #############
-
-
-#### Análisis exploratorio y conversción en factor
 tab_xtab(var.row = db$css,db$acc,show.cell.prc = T,show.summary = F) #Tabla de contingencia de variable de interés
-
 #Pasamos a factor para regresión
 db$css<-as_factor(db$css) #Clase Social Marx
 db$sex<-as_factor(db$SEX) #Sexo
@@ -367,47 +341,36 @@ db$pos_pol2<-as_factor(db$pos_pol) #Posición política
 
 
 
-##### MODELOS ######
+# 2. Modelos ####
 
-#Modelo 1: Variable dependiente Acción Colectiva  / #Independiente = css
+## 2.1 Modelo A: Variable dependiente Acción Colectiva  / #Independiente = css ####
 
 # Modelo A
 reg1<-lm(acc ~ css, data = db)
-sjPlot::tab_model(list(reg1), show.ci=FALSE, show.se = TRUE,
-                  show.aic = TRUE, show.r2 = TRUE, collapse.se = TRUE,
-                  title = "Predictores de XXX",
-                  p.style = "stars",
-                  string.pred = "Predictores", string.est = "β",digits = 3,
-                  dv.labels = c("Modelo 1"))
 
 # Modelo A.2
 reg2<-lm(acc ~ css+cs_sub2+sex, data = db)
-sjPlot::tab_model(list(reg1, reg2), show.ci=FALSE, p.style = "stars",
-                  string.pred = "Predictores", string.est = "β",digits = 3,
-                  dv.labels = c("Modelo 1", "Modelo 2"))
 
 # Modelo A.3
 reg3<-lm(acc ~ css+cs_sub2+AGE, data = db)
-sjPlot::tab_model(list(reg1, reg2, reg3), show.ci=FALSE, p.style = "stars",
-                  string.pred = "Predictores", string.est = "β",digits = 3,
-                  dv.labels = c("Modelo 1", "Modelo 2", "Modelo 3"))
+
 # Modelo A.4
 reg4<-lm(acc ~ css+AGE+partner, data = db)
-sjPlot::tab_model(list(reg1, reg2, reg3, reg4), show.ci=FALSE, p.style = "stars",
-                  string.pred = "Predictores", string.est = "β",digits = 3,
-                  dv.labels = c("Modelo 1", "Modelo 2", "Modelo 3", "Modelo 4"))
+
 # Modelo A.5
 reg5<-lm(acc ~ css+cs_sub2+AGE+sex+partner, data = db)
 sjPlot::tab_model(list(reg1, reg2, reg3, reg4, reg5), show.ci=FALSE, show.se = TRUE,
                   show.aic = TRUE, show.r2 = TRUE, collapse.se = TRUE,
-                  show.reflvl = TRUE,
-                  title = "Predictores de XXX",
+                  title = "Multivariate regression modelos predicting determinants of collective action within capitalist structure (SE on parenthesis)",
                   p.style = "stars",
-                  string.pred = "Predictores", string.est = "β",digits = 3,
-                  dv.labels = c("Modelo 1", "Modelo 2", "Modelo 3", "Modelo 4", "Modelo 5"))
+                  string.pred = "Predictors", 
+                  string.est = "β", 
+                  digits = 2,
+                  dv.labels = c("Modelo 1", "Modelo 2", "Modelo 3", "Modelo 4", "Modelo 5"),
+                  file = "C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/tablas/modelo_a.xls")
 
 
-####
+## 2.2 Modelo B: Dependent: collective action / idependent (correct_class-identity)
 
 # Modelo B.1
 mod1<-lm(acc ~ correct_ci, data = db)
@@ -437,26 +400,97 @@ sjPlot::tab_model(list(mod1, mod2, mod3, mod4), show.ci=FALSE, p.style = "stars"
 mod5<-lm(acc ~ correct_ci+unionized+pos_pol2+AGE+sex, data = db)
 sjPlot::tab_model(list(mod1, mod2, mod3, mod4, mod5), show.ci=FALSE, show.se = TRUE,
                   show.aic = TRUE, show.r2 = TRUE, collapse.se = TRUE,
-                  title = "Predictores de XXX",
+                  title = "Collective Action determinants in contemporary capitalism",
                   p.style = "stars",
                   string.pred = "Predictores", string.est = "β",digits = 3,
                   dv.labels = c("Modelo 1", "Modelo 2", "Modelo 3", "Modelo 4", "Modelo 5"))
 
 
 
-#. Visualización
 
 
-# Step 4: Create the stargazer table
-stargazer(reg1, reg2, title = "Regression Results", align = TRUE, type = "html")
 
-# Alternatively, you can create the table and save it as a LaTeX or HTML table for further use.
-# For LaTeX:
-# stargazer(model1, model2, title = "Regression Results", align = TRUE, out = "regression_table.tex")
 
-# For HTML:
-stargazer(reg1, reg2, reg3, reg4, title = "Regression Results", align = TRUE)
 
-stargazer(reg1 = "Regression Results", align = TRUE, type = "text")
+############## PARTE 4#############
 
-stargazer(reg1, type = "html")
+# 1. Visualización descriptiva ####
+
+## 1. Generamos una base clon para realizar descr con sjmisc ####
+
+db1<-select(db,
+            acc,
+            acc2,
+            css,
+            cs_sub,
+            AGE,
+            SEX,
+            partner)
+
+## 2. Generamos la tabla ####
+
+descriptivo1<-sjmisc::descr(db1,
+              show = c("label","range", "mean", "sd", "NA.prc", "n"))
+
+## 2. Pasamos a LaTeX con xtable ####
+
+xtable(descriptivo1,
+       type = "latex",
+       caption = "Descriptives Statistics")
+
+
+# Paso 2: Calcular frecuencia y frecuencia acumulada para todas las columnas numéricas
+
+
+
+cor_matrix<-cor(c(db1$css, db1$acc))
+
+
+
+
+
+
+
+
+
+
+############## PARTE 6#############
+
+# 1. Export tables ####
+
+# Set the folder path
+folder_path2 <- "C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/tablas"
+
+# Create the folder if it doesn't exist
+if (!dir.exists(folder_path2)) {
+  dir.create(folder_path2, recursive = TRUE)
+}
+
+output_file <- paste0(folder_path2, "/tabla_desc.xlsx")
+write.xlsx(t1, output_file, row.names = FALSE)
+
+
+# Create the sjPlot regression table
+table_output <- sjt.lm(reg1, reg2, reg3, reg4, reg5)
+
+# Save the sjPlot output to an Excel file
+output_file <- "C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/tablas/regression_table.xlsx"
+write.xlsx(modelo_b, output_file)
+
+
+
+# 2. Export dataset ####
+
+# Set the folder path
+folder_path <- "C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/base"
+
+# Create the folder if it doesn't exist
+if (!dir.exists(folder_path)) {
+  dir.create(folder_path, recursive = TRUE)
+}
+# Replace 'your_data' with the name of your database object
+save(db, file = paste0(folder_path, "/db.RData"))
+
+# Load the data from the RData file
+load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/base/db.RData")
+
