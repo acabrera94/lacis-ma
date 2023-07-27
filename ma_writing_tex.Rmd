@@ -43,6 +43,12 @@ However, with the recent protests located in the Global North have shown that
 
 ## Social Movement classic research agenda
 
+[@mcadamDynamicsContention2004]
+
+[@stanleyPoliticalEconomySocial2013][@xtable]
+
+[@usmaniDemocracyClassStruggle2018]
+
 ## (Re)turning to Capitalism
 
 ## Class and Social Movements
@@ -60,6 +66,8 @@ This article uses a quantitative methodology based on the [Social Survey Program
 [^3]: According to the ISSP, the exceptions were countries such as Finland, were individuals between 15 and 75 were surveyed, Japan, were 16 years old and older were surveyed, South Africa, were the respondents were 16 years or more, and Sweden, were the individuals were between 17 and 79 years old.
 
 ## Methods
+
+[@huntington-kleinEffectIntroductionResearch2022]
 
 The hypotheses that led this study were tested by calculating OLS. According to Linear regressions are the "*best linear approximation of the relationship*" between two variables.
 
