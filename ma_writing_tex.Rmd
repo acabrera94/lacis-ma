@@ -9,7 +9,7 @@ output:
     includes:
       in_header: preamble.tex
 bibliography: references.bib
-csl: apa6.csl
+csl: apa7.csl
 link-citations: yes
 ---
 
@@ -35,7 +35,7 @@ body {
 
 # Introduction
 
-Social movement studies have a long-standing tradition of studying conflict, social change, and what some scholars contentious politics [@mcadam2004].
+Social movement studies have a long-standing tradition of studying conflict, social change, and what some scholars contentious politics .
 
 However, with the recent protests located in the Global North have shown that
 
@@ -43,47 +43,9 @@ However, with the recent protests located in the Global North have shown that
 
 ## Social Movement classic research agenda
 
-[@tarrow1996]
-
-[@mcadam1999]
-
-[@mcadam2004]
-
-[@gamson1996]
-
-[@benford2000]
-
-[@snow1986]
-
-[@goodwin2001]
-
-[@tarrow2011]
-
 ## (Re)turning to Capitalism
 
-[@giugni2016]
-
-[@arce2007; @bellinger2011]
-
-[@rossi2022]
-
-[@stanley2013]
-
-[@dellaporta2015a]
-
-[@dellaporta2017c]
-
-@dellaporta2020
-
 ## Class and Social Movements
-
-[@eder2013]
-
-[@eidlin2018]
-
-[@hellinger2020]
-
-[@therborn2012]
 
 # Methodology
 
@@ -99,9 +61,9 @@ This article uses a quantitative methodology based on the [Social Survey Program
 
 ## Methods
 
-The hypotheses that led this study were tested by calculating OLS. According to @huntington-klein2022 , Linear regressions are the "*best linear approximation of the relationship*" between two variables.
+The hypotheses that led this study were tested by calculating OLS. According to Linear regressions are the "*best linear approximation of the relationship*" between two variables.
 
-As the literature says [@angrist2009; @chatterjee2006; @angrist2014; @huntington-klein2022], Linear Models are appropriate when we seek [....]. In this case, since we are testing the effect that class structure has on the working class participation in collective action activities, other models that provide a better understanding of probability, such as Logistic and Logit, aren't required. To put it in other words, since we are not measuring the *probability* that the working class has to undertake collective action activities but the *influence* that class structure itself has on
+As the literature says, Linear Models are appropriate when we seek [....]. In this case, since we are testing the effect that class structure has on the working class participation in collective action activities, other models that provide a better understanding of probability, such as Logistic and Logit, aren't required. To put it in other words, since we are not measuring the *probability* that the working class has to undertake collective action activities but the *influence* that class structure itself has on
 
 # Analysis
 
@@ -128,8 +90,6 @@ As the literature says [@angrist2009; @chatterjee2006; @angrist2014; @huntington
 \end{tabular}
 \end{table}
 ```
-
-
 ## Models
 
 # Discussion
