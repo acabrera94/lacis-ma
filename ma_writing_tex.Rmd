@@ -8,6 +8,10 @@ output:
     latex_engine: pdflatex
     includes:
       in_header: preamble.tex
+      keep_tex: true
+      pandoc_args: [
+      "-V", "linestretch=2"  # This sets the line spacing to double
+    ]
 bibliography: references.bib
 csl: apa7.csl
 link-citations: yes
@@ -42,6 +46,8 @@ However, with the recent protests located in the Global North have shown that
 # Social Movements, Capitalism, and Class
 
 ## Social Movement classic research agenda
+
+Social movement research has a long-standing tradition in academia. Its development, some argue, started from what scholars have called the "psychometric" [@eidlinSocialClassSocial2018] approach. This approach focused on the
 
 [@mcadamDynamicsContention2004]
 
