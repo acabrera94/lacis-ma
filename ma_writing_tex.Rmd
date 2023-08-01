@@ -3,15 +3,13 @@ title: "Tidying what never should have been untied: Social Movements, Capitalism
 subtitle: "Master's in Latin American, Caribbean and Iberian Studies."
 author: "Álvaro C."
 date: "`r Sys.Date()`"
+abstract: "Political processes, social movements, and collective action inquiry have a large and long tradition in social science research. However, most of these studies have relied on traditional approaches to address such research, ignoring the effects that capitalism has on politics, political action, social movements, and collective action. This phenomenon has been repeated all over the globe, particularly in the Global North, in which repertories of mobilization, political processes, and framing analyses have dominated the scholarly debate around collective action. Although some theories have been influenced by Marxism, none of them take capitalism and, thus, class as central in their analyses. Drawing on Marxist collective action theory, Erik Wright’s class model analysis, multivariate regression analysis, and the ISSP Survey (ISSP 2014 – Citizenship II, N = 49.807), the purpose of this paper is to examine the influence that class structure has on participation in different activities of collective action. In consonance with the theory, the results show that belonging to the working class has a negative effect on participation in collective action. Conversely, the middle groups show positive effects in collective action. Lastly, belonging to upper class show a negative effect."
+
 output:
   pdf_document:
     latex_engine: pdflatex
     includes:
       in_header: preamble.tex
-      keep_tex: true
-      pandoc_args: [
-      "-V", "linestretch=2"  # This sets the line spacing to double
-    ]
 bibliography: references.bib
 csl: apa7.csl
 link-citations: yes
@@ -24,7 +22,7 @@ knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
 library(tinytex)
 ```
 
-```{=html}
+```{=pdf}
 <style>
 body {
   text-align: justify;
@@ -39,26 +37,34 @@ body {
 
 # Introduction
 
+# Social Movements, capitalism, and class 
+
+## Social Movement classic research agenda
+
 Social movement studies have a long-standing tradition of studying conflict, social change, and what some scholars contentious politics .
 
 However, with the recent protests located in the Global North have shown that
 
-# Social Movements, Capitalism, and Class
 
-## Social Movement classic research agenda
+Social movement research has a long-standing tradition in academia. Its development, some argue, started from what scholars have called the "psychological" approach [@eidlinSocialClassSocial2018]. Drawing on psychological theory, this approach focused on the individual and sought to understand the reasons that led actors to take part in mobilization. To put it in other words, this analytical framework delved into the internal factors that caused actors to participate and, thus, create social movements.
 
-Social movement research has a long-standing tradition in academia. Its development, some argue, started from what scholars have called the "psychometric" [@eidlinSocialClassSocial2018] approach. This approach focused on the
+Drawing on the limits of this approach, the resource mobilization theory quickly gained adepts within academia, particularly in America, to explain that social movements didn't occur simply due to individual deviations but depended on the resources that participants held [@mccarthyResourceMobilizationSocial1977]. As such, actors that were able to mobilize a varied array of resources had the capacity to maintain continuous participation in movements.
+
+This perspective, although criticized, remained dominant for a long period of time, even serving as a background for contemporary academic work. Nonetheless, during the 1980s and influenced by Marxist tradition, a new theoretical framework developed and served as a milestone for social movement scholars. The political process model [@mcadamPoliticalProcessDevelopment1999], McAdam argues, is an alternative to resource mobilization theory and the classical model (psychological). In an attempt to synthesize the social movement theory to date, the theory proposes that insurgency occurs when internal and external factors develop collective action.
+
+In McAdam's words @mcadamPoliticalProcessDevelopment1999,
 
 [@mcadamDynamicsContention2004]
 
-[@stanleyPoliticalEconomySocial2013][@xtable]
-
-[@usmaniDemocracyClassStruggle2018]
-
 ## (Re)turning to Capitalism
 
-## Class and Social Movements
+The classical social movement agenda led the research on diverse aspects and perspectives on social movement inquiry. However, as Marxist scholars have always argued, capitalism as a social structure is always creating antagonistic forces that clash against each other, and this has been demonstrated by the various conflicts throughout the world that claim a reorder of the economic and political balance. The #OccupyWallstreet movement, the anti-austerity movements in Europe [@dellaportaSocialMovementsTimes2020], and the anti-neoliberal movements in South American countries [@sommaNoWaterOasis2020] have prompted many scholars to return to including capitalism in social movements analysis.
 
+Regarding the European scenario, @dellaportaSocialMovementsTimes2020 claim that recent European state policies have prompted heterogeneous organizations, movements, and other groups to walk to the street against such policies. In such a scenario, the authors argue that
+
+, although academia has left the political economy since 1970, it su
+
+## Class and Social Movements
 # Methodology
 
 ## Data
@@ -79,9 +85,12 @@ The hypotheses that led this study were tested by calculating OLS. According to 
 
 As the literature says, Linear Models are appropriate when we seek [....]. In this case, since we are testing the effect that class structure has on the working class participation in collective action activities, other models that provide a better understanding of probability, such as Logistic and Logit, aren't required. To put it in other words, since we are not measuring the *probability* that the working class has to undertake collective action activities but the *influence* that class structure itself has on
 
+
 # Analysis
 
-1
+Prior to the statistical analysis, all the coding workflow was done using R and its many packages[^4].
+
+[^4]: Most of the coding, wrangling, and analyses were used with tidyverse[@tidyverse], haven [@haven], sjPlot [@sjPlot], sjmisc[@sjmisc], sjlabelled [@sjlabelled], summarytools [@summarytools], car [@car], openxlsx[@openxlsx]. For presentation purposes stargazer [@stargazer] and xtable [@xtable] were used.
 
 ## Descriptives
 
@@ -105,6 +114,21 @@ As the literature says, Linear Models are appropriate when we seek [....]. In th
 \end{table}
 ```
 ## Models
+
+```{r loading-model-a, include=FALSE}
+
+library(stargazer)
+
+load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables/modelo_a_star.RData")
+
+```
+
+```{r printing-model-b, echo=FALSE, results='asis'}
+
+cat(modelo_a_star)
+
+```
+
 
 # Discussion
 

@@ -24,6 +24,47 @@
 %% load any required packages here
 
 
+% Pandoc syntax highlighting
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
 
 % tightlist command for lists without linebreak
 \providecommand{\tightlist}{%
@@ -31,6 +72,20 @@
 
 
 
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 
 \IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
 \IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
@@ -277,6 +332,14 @@ using R and its many packages\footnote{Most of the coding, wrangling,
 
 \hypertarget{models}{%
 \subsection{Models}\label{models}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cat}\NormalTok{(modelo\_b)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{table}[!htbp] \centering    \caption{OLS results predicting collective action (SE on parenthesis)}    \label{}  \small  \begin{tabular}{@{\extracolsep{1pt}} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} D{.}{.}{-3} }  \\[-1.8ex]\hline  \hline \\[-1.8ex]  \multicolumn{1}{c}{} & \multicolumn{1}{c}{OLS results predicting collective action (SE on parenthesis)} & \multicolumn{1}{c}{=========================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================================} & \multicolumn{1}{c}{  OLS results predicting collective action (SE on parenthesis) ============================================================== Dependant Variable ------------------------------------------------- acc (1) (2) (3) (4) (5) -------------------------------------------------------------- css\_grouped2 0.737\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  0.649\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  0.652\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  0.738\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  0.644\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  (0.022) (0.023) (0.023) (0.022) (0.023) css\_grouped3 -0.138\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  -0.091\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  -0.085\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  -0.119\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  -0.085\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  (0.019) (0.019) (0.019) (0.019) (0.020) cs\_sub21 -0.327\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  -0.323\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  -0.320\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  (0.017) (0.017) (0.017) cs\_sub22 -0.541\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  -0.537\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  -0.519\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  (0.020) (0.020) (0.020) sex2 0.101\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  0.110\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  (0.014) (0.014) AGE -0.002\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  -0.003\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  -0.002\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  (0.0004) (0.0004) (0.0004) partner 0.170\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  0.129\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  (0.015) (0.016) Constant 1.310\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  1.523\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  1.674\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  1.325\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  1.536\textasteriskcentered  \textasteriskcentered  \textasteriskcentered  (0.016) (0.021) (0.030) (0.030) (0.032) -------------------------------------------------------------- Observations 33,582 31,427 31,372 32,141 31,217 R2 0.072 0.096 0.095 0.078 0.099 Adjusted R2 0.072 0.096 0.095 0.077 0.099 ============================================================== Note: \textasteriskcentered  p\textless  0.1; \textasteriskcentered  \textasteriskcentered  p\textless  0.05; \textasteriskcentered  \textasteriskcentered  \textasteriskcentered  p\textless  0.01   OLS results predicting collective action (SE on parenthesis) ===== small -----} & \multicolumn{1}{c}{-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------} & \multicolumn{1}{c}{} & \multicolumn{1}{c}{OLS results predicting collective action (SE on parenthesis)} & \multicolumn{1}{c}{=====} & \multicolumn{1}{c}{small} & \multicolumn{1}{c}{-----} \\  \hline \\[-1.8ex]  \end{tabular}  \end{table}   \begin{table}[!htbp] \centering    \caption{OLS results predicting collective action (SE on parenthesis)}    \label{}  \small  \begin{tabular}{@{\extracolsep{1pt}} D{.}{.}{-3} }  \\[-1.8ex]\hline  \hline \\[-1.8ex]  \multicolumn{1}{c}{small} \\  \hline \\[-1.8ex]  \end{tabular}  \end{table}
 
 \hypertarget{conc}{%
 \section{Conclusion}\label{conc}}

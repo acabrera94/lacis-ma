@@ -8,8 +8,7 @@ authors:
 - name: Álvaro Cabrera
   thanks: The author gratefully acknowledge Gay Seidman and Pablo Pérez-Ahumada for their help landing this piece from the world of ideas to the material world.
   affiliation: LACIS, University of Wisconsin-Madison
-
-
+  
 keywords:
 - collective action
 - social movements
@@ -109,9 +108,24 @@ Prior to the statistical analysis, all the coding workflow was done using R and 
 ```
 ## Models
 
-```{r, fig.cap = "A plot example", echo = FALSE}
+```{r loading-model-a, include=FALSE}
+
+library(stargazer)
+library(kableExtra)
+
+load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables/modelo_b.RData")
 
 ```
+
+```{r results='asis'}
+
+cat(modelo_b)
+
+```
+
+
+
+
 
 # Conclusion {#conc}
 

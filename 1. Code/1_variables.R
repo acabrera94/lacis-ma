@@ -5,7 +5,9 @@
 # Preamble
 
 library(pacman)
-pacman::p_load(car)
+pacman::p_load(car,
+               sjlabelled,
+               dplyr)
 
 rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
 options(scipen=999) # valores sin notación científica
@@ -64,8 +66,8 @@ db1$unionized <- car::recode(db1$UNION,
                             "1:2=1; 3:4=0")
 #Labels
 db1$unionized <- set_labels(db1$unionized,
-                           labels=c("Have participated in unions"=1,
-                                    "Haven't participated in unions"=0)) #Unions 
+                           labels=c("Have participated in unions"= 1,
+                                    "Haven't participated in unions"= 0)) #Unions 
 
 
 
@@ -118,6 +120,17 @@ db1$css <- set_labels(db1$css,
                                "Proletario tradicional"=9)) #Clase Social
 
 frq(db1$css)
+
+
+# Grouped Social Class
+
+db1$css_grouped<- car::recode(db1$css,
+                          "1:3=1; 4:6=2; 7:9=3") # 1 = Upper classes / 2=Middle Groups / 3 = Working Class
+
+db1$css_grouped <- set_labels(db1$css_grouped,
+                      labels=c( "Upper classes"=1,
+                                "Middle Groups"=2,
+                                "Working Class"=3)) #Clase Social
 
 
 
