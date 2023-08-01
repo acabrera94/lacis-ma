@@ -1,35 +1,50 @@
 ---
-title: Tidying what should have never been untied. Collective Action, Capitalism, and Social Movements.
+title: "Tidying what never should have been untied: Social Movements, Capitalism, and Class"
+subtitle: "LACIS, University of Wisconsin-Madison."
+author: "Álvaro Cabrera"
+date: "`r Sys.Date()`"
+abstract: "Political processes, social movements, and collective action inquiry have a large and long tradition in social science research. However, most of these studies have relied on traditional approaches to address such research, ignoring the effects that capitalism has on politics, political action, social movements, and collective action. This phenomenon has been repeated all over the globe, particularly in the Global North, in which repertories of mobilization, political processes, and framing analyses have dominated the scholarly debate around collective action. Although some theories have been influenced by Marxism, none of them take capitalism and, thus, class as central in their analyses. Drawing on Marxist collective action theory, Erik Wright’s class model analysis, multivariate regression analysis, and the ISSP Survey (ISSP 2014 – Citizenship II, N = 49.807), the purpose of this paper is to examine the influence that class structure has on participation in different activities of collective action. In consonance with the theory, the results show that belonging to the working class has a negative effect on participation in collective action. Conversely, the middle groups show positive effects in collective action. Lastly, belonging to upper class shows a negative effect."
 
-# set to 1 to the authors and acknowledgements, producing the required blinded version.
-blinded: 0
-
-authors: 
-- name: Álvaro Cabrera
-  thanks: The author gratefully acknowledge Gay Seidman and Pablo Pérez-Ahumada for their help landing this piece from the world of ideas to the material world.
-  affiliation: LACIS, University of Wisconsin-Madison
-  
-keywords:
-- collective action
-- social movements
-- capitalism
-- class structure
-- class politics
-abstract: |
- Political processes, social movements, and collective action inquiry have a large and long tradition in social science research. However, most of these studies have relied on traditional approaches to address such research, ignoring the effects that capitalism has on politics, political action, social movements, and collective action. This phenomenon has been repeated all over the globe, particularly in the Global North, in which repertories of mobilization, political processes, and framing analyses have dominated the scholarly debate around collective action. Although some theories have been influenced by Marxism, none of them take capitalism and, thus, class as central in their analyses. Drawing on Marxist collective action theory, Erik Wright’s class model analysis, multivariate regression analysis, and the ISSP Survey (ISSP 2014 – Citizenship II, N = 49.807), the purpose of this paper is to examine the influence that class structure has on participation in different activities of collective action. In consonance with the theory, the results show that belonging to the working class has a negative effect on participation in collective action. Conversely, the upper classes show positive effects in collective action. Lastly, belonging to middle groups doesn’t show any significant effect.
-
+output:
+  pdf_document:
+    latex_engine: pdflatex
+    includes:
+      in_header: preamble.tex
 bibliography: references.bib
-biblio-style: apalike # default is using plain.bst
-output: rticles::asa_article
+csl: apa7.csl
+link-citations: yes
 ---
+
+\newpage
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning = FALSE)
+library(tinytex)
+```
+
+```{=pdf}
+<style>
+body {
+  text-align: justify;
+}
+</style>
+```
+# Writing recordatory
+
+1.  Paragrpah main idea
+2.  Examples
+3.  Sum
 
 # Introduction
 
-a
-
-# Social Movements, Capitalism, and Class
+# Social Movements, capitalism, and class 
 
 ## Social Movement classic research agenda
+
+Social movement studies have a long-standing tradition of studying conflict, social change, and what some scholars contentious politics .
+
+However, with the recent protests located in the Global North have shown that
+
 
 Social movement research has a long-standing tradition in academia. Its development, some argue, started from what scholars have called the "psychological" approach [@eidlinSocialClassSocial2018]. Drawing on psychological theory, this approach focused on the individual and sought to understand the reasons that led actors to take part in mobilization. To put it in other words, this analytical framework delved into the internal factors that caused actors to participate and, thus, create social movements.
 
@@ -50,15 +65,6 @@ Regarding the European scenario, @dellaportaSocialMovementsTimes2020 claim that 
 , although academia has left the political economy since 1970, it su
 
 ## Class and Social Movements
-
-## Plot
-
-1
-
-```{r, fig.cap = "A plot example", echo = FALSE}
-plot(cars)
-```
-
 # Methodology
 
 ## Data
@@ -79,11 +85,12 @@ The hypotheses that led this study were tested by calculating OLS. According to 
 
 As the literature says, Linear Models are appropriate when we seek [....]. In this case, since we are testing the effect that class structure has on the working class participation in collective action activities, other models that provide a better understanding of probability, such as Logistic and Logit, aren't required. To put it in other words, since we are not measuring the *probability* that the working class has to undertake collective action activities but the *influence* that class structure itself has on
 
+
 # Analysis
 
 Prior to the statistical analysis, all the coding workflow was done using R and its many packages[^4].
 
-[^4]: Most of the coding, wrangling, and analyses were used with tidyverse[@tidyverse], haven [@haven], sjPlot [@sjPlot], sjmisc[@sjmisc], sjlabelled [@sjlabelled], summarytools [@summarytools], car [@car], openxlsx[@openxlsx]. For presentation purposes stargazer [@stargazer] and xtable [@xtable] were used.
+[^4]: Most of the coding, wrangling, and analyses were used with tidyverse [@tidyverse], haven [@haven], sjPlot [@sjPlot], sjmisc [@sjmisc], sjlabelled [@sjlabelled], summarytools [@summarytools], car [@car], openxlsx [@openxlsx]. For presentation purposes stargazer [@stargazer] and xtable [@xtable] were used.
 
 ## Descriptives
 
@@ -98,7 +105,7 @@ Prior to the statistical analysis, all the coding workflow was done using R and 
 3 & acc & Collective Action Participation & 33582 & 8.51 & 1.39 & 1.32 & 4 (0-4) \\ 
   4 & acc2 & Dummy Collective Action & 33582 & 8.51 & 0.65 & 0.48 & 1 (0-1) \\ 
   6 & css & Social Class & 36706 & 0.00 & 6.67 & 2.45 & 8 (1-9) \\ 
-  5 & cs\_sub & Subjective Social-Class & 34224 & 6.76 & 0.96 & 0.74 & 2 (0-2) \\ 
+  5 & cs\_sub & Subjective Social Class & 34224 & 6.76 & 0.96 & 0.74 & 2 (0-2) \\ 
   1 & AGE & Age of respondent & 36627 & 0.22 & 48.86 & 16.67 & 87 (15-102) \\ 
   2 & SEX & Sex of Respondent & 36696 & 0.03 & 1.51 & 0.50 & 1 (1-2) \\ 
   7 & partner & Living in steady partnership & 35142 & 4.26 & 0.69 & 0.46 & 1 (0-1) \\ 
@@ -111,22 +118,20 @@ Prior to the statistical analysis, all the coding workflow was done using R and 
 ```{r loading-model-a, include=FALSE}
 
 library(stargazer)
-library(kableExtra)
 
-load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables/modelo_b.RData")
-
-```
-
-```{r results='asis'}
-
-cat(modelo_b)
+load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables/modelo_a_star.RData")
 
 ```
 
+```{r printing-model-a, echo=FALSE, results='asis'}
+
+cat(modelo_a_star)
+
+```
 
 
+# Discussion
 
-
-# Conclusion {#conc}
+# Conclusions
 
 # References

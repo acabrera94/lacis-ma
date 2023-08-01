@@ -37,19 +37,19 @@ db2$pos_pol2<-as_factor(db2$pos_pol) #Posición política
 reg1<-lm(acc ~ css, data = db2)
 
 # Modelo A.2
-reg2<-lm(acc ~ css+cs_sub2+sex, data = db2)
+reg2<-lm(acc ~ css+cs_sub2+sex+partner, data = db2)
 
 # Modelo A.3
 reg3<-lm(acc ~ css+cs_sub2+AGE, data = db2)
 
 # Modelo A.4
-reg4<-lm(acc ~ css+AGE+partner, data = db2)
+reg4<-lm(acc ~ css+AGE, data = db2)
 
 # Modelo A.5
 reg5<-lm(acc ~ css+cs_sub2+AGE+sex+partner, data = db2)
 sjPlot::tab_model(list(reg1, reg2, reg3, reg4, reg5), show.ci=FALSE, show.se = TRUE,
                   show.aic = TRUE, show.r2 = TRUE, collapse.se = TRUE,
-                  title = "Multivariate regression models predicting determinants of collective action within capitalist structure (SE on parenthesis)",
+                  title = "Multivariate model measuring collective action (SE on parenthesis)",
                   p.style = "stars",
                   string.pred = "Predictors", 
                   string.est = "β", 
@@ -133,18 +133,23 @@ sjPlot::tab_model(list(mod1, mod2, mod3, mod4, mod5), show.ci=FALSE, show.se = T
 #Modelo A
 modelo_a_star<-stargazer(modelo_a,
                     header = FALSE,
-                    column.sep.width = "1pt",
-                    title = "Multivariate regression models predicting determinants of collective action within capitalist structure (SE on parenthesis)",
+                    column.sep.width = "0.5pt",
+                    title = "Multivariate model measuring collective action (SE on parenthesis)",
+                    covariate.labels = c("Small Employers (Ref: Burgeoisie)", "Petty Bourgeoisie", "Expert Managers",
+                                         "Expert non-managers", "Semi-credentialled managers", "Semi-credentialled worker",
+                                         "Non-credentialled manager", "Traditional proletariat",
+                                         "Subjective Middle Class (ref: Upper class)", "Subjective Working Class",
+                                         "Female (ref: Male)", "Age", "Has a steady partner (ref: no)"),
                     digits = 2,
                     dep.var.caption  = "Dependant Variable",
+                    dep.var.labels.include = FALSE,
                     no.space = TRUE,
                     font.size = "small",
-                    omit.stat = c("f", "ll", "ser"),
                     keep.stat = c("n", "rsq", "adj.rsq", "aic"),
+                    omit.stat = c("f", "ll", "ser"),
                     align = TRUE,
                     type = "latex"
                     ) 
-
 
 
 #Guardamos Modelo A
