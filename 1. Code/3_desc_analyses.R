@@ -16,8 +16,8 @@ db2<-readRDS("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/3. Dat
 ## 1. Generamos una base clon para realizar descr con sjmisc ####
 
 desc_db<-select(db2,
-            acc,
             acc2,
+            unionized,
             css,
             cs_sub,
             AGE,
@@ -33,6 +33,7 @@ descriptivo1<-sjmisc::descr(desc_db,
 
 xtable(descriptivo1,
        type = "latex",
+       label = "desc-table",
        caption = "Descriptives Statistics")
 
 

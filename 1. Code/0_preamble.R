@@ -59,42 +59,35 @@ db<-select(db,
 
 
 ##4.1 Frecuencia de variables (Solo si ex necesario)
-frq(db$NEMPLOY) 
+#frq(db$NEMPLOY) 
 
 
 
 
 # 5. Eliminamos NA ####
 
-recoding_specs <- list(
-  SEX = 9,
-  AGE = 999,
-  DEGREE = 9,
-  EMPREL = c(0, 9),
-  NEMPLOY = c(9995, 9998, 9999),
-  WRKSUP = c(0, 8, 9),
-  TOPBOT = c(0,98, 99),
-  V17 = c(8, 9),
-  V18 = c(8, 9),
-  V19 = c(8, 9),
-  V20 = c(8, 9),
-  V21 = c(8, 9),
-  V22 = c(8, 9),
-  V23 = c(8, 9),
-  V24 = c(8, 9),
-  V25 = c(8, 9),
-  V27 = c(8, 9),
-  UNION = c(8, 9),
-  V48 = c(98, 99),
-  ISCO08= c(0, 9998, 9999, 0110, 0210, 0310),
-  PARTLIV= c(7, 9, 0))
 
-for (var in names(recoding_specs)) {
-  if (!is.null(recoding_specs[[var]])) {
-    recoding_values <- recoding_specs[[var]]
-    db[[var]] <- recode(db[[var]], paste("c(", paste(recoding_values, collapse = ","), ")=NA"))
-  }
-}
+db$SEX <- ifelse(db$SEX == 9, NA, db$SEX)
+db$AGE <- ifelse(db$AGE == 999, NA, db$AGE)
+db$DEGREE <- ifelse(db$DEGREE == 9, NA, db$DEGREE)
+db$EMPREL <- ifelse(db$EMPREL %in% c(0, 9), NA, db$EMPREL)
+db$NEMPLOY <- ifelse(db$NEMPLOY %in% c(9995, 9998, 9999), NA, db$NEMPLOY)
+db$WRKSUP <- ifelse(db$WRKSUP %in% c(0, 8, 9), NA, db$WRKSUP)
+db$TOPBOT <- ifelse(db$TOPBOT %in% c(0, 98, 99), NA, db$TOPBOT)
+db$V17 <- ifelse(db$V17 %in% c(8, 9), NA, db$V17)
+db$V18 <- ifelse(db$V18 %in% c(8, 9), NA, db$V18)
+db$V19 <- ifelse(db$V19 %in% c(8, 9), NA, db$V19)
+db$V20 <- ifelse(db$V20 %in% c(8, 9), NA, db$V20)
+db$V21 <- ifelse(db$V21 %in% c(8, 9), NA, db$V21)
+db$V22 <- ifelse(db$V22 %in% c(8, 9), NA, db$V22)
+db$V23 <- ifelse(db$V23 %in% c(8, 9), NA, db$V23)
+db$V24 <- ifelse(db$V24 %in% c(8, 9), NA, db$V24)
+db$V25 <- ifelse(db$V25 %in% c(8, 9), NA, db$V25)
+db$V27 <- ifelse(db$V27 %in% c(8, 9), NA, db$V27)
+db$UNION <- ifelse(db$UNION %in% c(7, 8, 9), NA, db$UNION)
+db$V48 <- ifelse(db$V48 %in% c(98, 99), NA, db$V48)
+db$ISCO08 <- ifelse(db$ISCO08 %in% c(0, 9998, 9999, 0110, 0210, 0310), NA, db$ISCO08)
+db$PARTLIV <- ifelse(db$PARTLIV %in% c(7, 9, 0), NA, db$PARTLIV)
 
 
 # 6. Resumen de datos ####

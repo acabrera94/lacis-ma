@@ -6,3 +6,14 @@
 \usepackage{setspace}
 \setstretch{2}
 \fontsize{12}{14}\selectfont % 12pt font size with 14pt baseline skip
+
+% packages used by modelsummary (if destroy the previous table delete.
+\usepackage{booktabs}
+\usepackage{siunitx}
+\newcolumntype{d}{S[
+    input-open-uncertainty=,
+    input-close-uncertainty=,
+    parse-numbers = false,
+    table-align-text-pre=false,
+    table-align-text-post=false
+ ]}

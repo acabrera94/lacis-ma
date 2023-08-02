@@ -7,7 +7,8 @@
 library(pacman)
 pacman::p_load(car,
                sjlabelled,
-               dplyr)
+               dplyr,
+               sjmisc)
 
 rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
 options(scipen=999) # valores sin notación científica
@@ -19,6 +20,7 @@ db1<-readRDS("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/3. Dat
 # 1. Preámbulo Clase Social ####
 
 #Construcción de autoempleado
+
 db1$auto_emp <- ifelse(db1$EMPREL == 1, 2, 1) #f value 1 (employee) then the value is 2, if not (self-employee), the value is 1.
 frq(db1$auto_emp) 
 
@@ -66,8 +68,8 @@ db1$unionized <- car::recode(db1$UNION,
                             "1:2=1; 3:4=0")
 #Labels
 db1$unionized <- set_labels(db1$unionized,
-                           labels=c("Have participated in unions"= 1,
-                                    "Haven't participated in unions"= 0)) #Unions 
+                           labels=c("Yes"= 1,
+                                    "No"= 0)) #Unions 
 
 
 
@@ -109,15 +111,15 @@ get_label(db1$css)
 
 #Aplicamos labels valores
 db1$css <- set_labels(db1$css,
-                     labels=c( "Burguesía tradicional"=1,
-                               "Pequeño empleador"=2,
-                               "Pequeña Burguesía"=3,
-                               "Directivo/Supervisor Experto"=4,
-                               "Experto no directivo"=5,
-                               "Directivo/Supervisor semi-credencializado"=6,
-                               "Obrero semi-credencializado"=7,
-                               "Directivo/Supervisor no credencializado"=8,
-                               "Proletario tradicional"=9)) #Clase Social
+                     labels=c( "Burgeoisie"=1,
+                               "Small Employers"=2,
+                               "Petty Bourgeoisie"=3,
+                               "Expert Managers"=4,
+                               "Expert non-managers"=5,
+                               "Semi-credentialled managers"=6,
+                               "Semi-credentialled worker"=7,
+                               "Non-credentialled manager"=8,
+                               "Traditional proletariat"=9)) #Clase Social
 
 frq(db1$css)
 
@@ -224,8 +226,7 @@ frq(db1$acc2)
 # 5. Asimilamos al n de css ####
 
 #Filtrar la base de datos para mantener solo las filas donde "clase_social" no sea NA
-db1 <- db1 %>%
-  filter(!is.na(css))
+db1 <- db1[complete.cases(db1$css), ]
 
 
 # 7. Exportar y guardar ####
