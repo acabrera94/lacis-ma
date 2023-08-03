@@ -29,6 +29,7 @@ desc_db<-select(db2,
 descriptivo1<-sjmisc::descr(desc_db,
                             show = c("label","range", "mean", "sd", "NA.prc", "n"))
 
+print(descriptivo1)
 ## 2. Pasamos a LaTeX con xtable ####
 
 xtable(descriptivo1,

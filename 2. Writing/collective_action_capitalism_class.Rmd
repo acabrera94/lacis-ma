@@ -43,11 +43,12 @@ Enjoy.
 Álvaro Cabrera.
 
 \newpage
+
 # Introduction
 
 Social movement scholars have been researching collective action for an extended period of time. Based mainly upon traditional perspectives, such as resource mobilization, political processes, political opportunities, framing, and contentious politics, protest analysis has been proficient and leading political sociology until these days. Answering questions such as who joins social movements, who leads them, what are the emotions associated when protesting, why some are violent rather than pacific, or why some movements don't achieve anything, whereas others influence public policy, have been at the core of this analytic framework.
 
-Although undoubtedly prolific, the rising of social movements that mainly focused on what Marxist tradition calls "the structure," that is, the socio-economic relations. From the #Occupy Wall Street movement demanding more rights for the 99% in the U.S., the *Indignados* in Spain occupying public spaces and demanding new social pacts, the recent anti-austerity movements in Europe demanding the end of the public cuts, to the recent anti-neoliberal revolts in South America,
+Although undoubtedly prolific, the rising of social movements that mainly focused on what Marxist tradition calls "the structure," that is, the socio-economic relations. From the #Occupy Wall Street movement demanding more rights for the 99% in the U.S. [@tejerinaIndignationOccupationNew2013], the Arab Spring [@bayatArabSpringIts2013], the *Indignados* in Spain occupying public spaces and demanding new social pacts, the recent anti-austerity movements in Europe demanding the end of the public cuts, to the recent anti-neoliberal revolts in South America,
 
 By the time these uprisings have been unfolding, scholars have shown a growing interest in the foundations that could explain these demonstrations. This has led to a revitalization of political economy, class, and labor in explaining the origins of movements. This article is an attempt to contribute to such a purpose.
 
@@ -60,6 +61,7 @@ In what follows, the rest of the paper is organized into five major parts. The f
 [^3]: It is very likely that, as this research goes forward, this unfolds into more than one hypothesis.
 
 \newpage
+
 # Social Movements, capitalism, and class
 
 ## Social Movement classic research agenda
@@ -91,62 +93,14 @@ Regarding the European scenario, @dellaportaSocialMovementsTimes2020 claim that 
 ## Class and Social Movements
 
 \newpage
-# Methodology
 
-## Data
-
-This article uses a quantitative methodology based on the [Social Survey Programme 2014 - Citizenship II (ISSP)](https://www.gesis.org/en/issp/modules/issp-modules-by-topic/citizenship/2014)[^5] (*N* = 49.087). This dataset applies a similar[^6] questionnaire in every country in which it is applied. The sampling procedure differs for each country: in some countries, partly simple random samples were applied, whereas in others, partly multistage stratified random samples. The data was collected in two ways. The first one was through interviews (face-to-face, Computer Assisted Personal interviews, or completed on the telephone) or Self-administered questionnaires (Computer Assisted self-interviews or Computer-Assisted web interviews). The analysis is mostly applied to individuals that are 18 years or more with some exceptions[^7]. After processing the dataset, the sample was reduced to 33.582 individuals nested in 34 countries.
-
-[^5]: By the time this article has been written, another wave of the same thematic survey is under development and expected to fully realese in 2025.
-
-[^6]: It is a similar questionary because the survey don't apply the exact same questions in every country. However, the questions are prepared to grasp and collect the same dimensions for every question applied.
-
-[^7]: According to the ISSP, the exceptions were countries such as Finland, were individuals between 15 and 75 were surveyed, Japan, were 16 years old and older were surveyed, South Africa, were the respondents were 16 years or more, and Sweden, were the individuals were between 17 and 79 years old.
-
-## Methods
-
-[@huntington-kleinEffectIntroductionResearch2022]
-
-The hypotheses that led this study were tested by calculating OLS. According to Linear regressions are the "*best linear approximation of the relationship*" between two variables.
-
-As the literature says, Linear Models are appropriate when we seek [....]. In this case, since we are testing the effect that class structure has on the working class participation in collective action activities, other models that provide a better understanding of probability, such as Logistic and Logit, aren't required. To put it in other words, since we are not measuring the *probability* that the working class has to undertake collective action activities but the *influence* that class structure itself has on
-
-\newpage
-# Analysis
-
-Prior to the statistical analysis, all the coding workflow was done using R and its many packages[^8].
-
-[^8]: Most of the coding, wrangling, and analyses were used with tidyverse [@tidyverse], haven [@haven], sjPlot [@sjPlot], sjmisc [@sjmisc], sjlabelled [@sjlabelled], summarytools [@summarytools], car [@car], openxlsx [@openxlsx]. For presentation purposes stargazer [@stargazer], ggeffects [@ggeffects], and xtable [@xtable] were used.
-
-The results of the codification can be seen in Table \ref{desc-table}
-
-```{=tex}
-\begin{table}[ht]
-\centering
-\caption{Dataframe descriptive statistics} 
-\label{desc-table}
-\begin{tabular}{rllrrrrl}
-  \hline
- & var & label & n & NA.prc & mean & sd & range \\ 
-  \hline
-3 & acc2 & Dummy Collective Action & 33582 & 8.51 & 0.65 & 0.48 & 1 (0-1) \\ 
-  7 & unionized & Participated in a Union & 36153 & 1.51 & 0.44 & 0.50 & 1 (0-1) \\ 
-  5 & css & Social Class & 36706 & 0.00 & 6.67 & 2.45 & 8 (1-9) \\ 
-  4 & cs\_sub & Subjective Social Class & 34224 & 6.76 & 0.96 & 0.74 & 2 (0-2) \\ 
-  1 & AGE & Age & 36627 & 0.22 & 48.86 & 16.67 & 87 (15-102) \\ 
-  2 & SEX & Sex & 36696 & 0.03 & 1.51 & 0.50 & 1 (1-2) \\ 
-  6 & partner & Has a steady partner & 35142 & 4.26 & 0.69 & 0.46 & 1 (0-1) \\ 
-   \hline
-\end{tabular}
-\end{table}
-```
 ## Hypotheses
 
 ### Hypothesis 1
 
-According to the Marxist tradition, social struggle, or insurgency, comes from the antagonistic relations that class structure creates. Therefore, individuals who are not in possession of the means of production, the working class, tend to resist and sometimes rebel against those who own them. [@marxManifiestoPartidoComunista2019; @marxDieciochoBrumarioLuis2015; @marxAntologia2015; @marxContribucionCriticaFilosofia2019]. Nonetheless, many critics have risen due to the apparent "mechanical" way in which such a process would unfold. In Marx's traditional view, capitalist development would generate the conditions in which the proletariat, the revolutionary class, would rebel against the bourgeoisie in a definitive attempt to suppress class structure and unequal relations. This theoretical framework inspired, for the first time in history, social struggles all over the world in which the main actor was the working class [@hobsbawmHistoriaSigloXX2011]. Nonetheless, although some of these revolutions[^9] still remain, the great majority of them collapsed and faded away.
+According to the Marxist tradition, social struggle, or insurgency, comes from the antagonistic relations that class structure creates. Therefore, individuals who are not in possession of the means of production, the working class, tend to resist and sometimes rebel against those who own them. [@marxManifiestoPartidoComunista2019; @marxDieciochoBrumarioLuis2015; @marxAntologia2015; @marxContribucionCriticaFilosofia2019]. Nonetheless, many critics have risen due to the apparent "mechanical" way in which such a process would unfold. In Marx's traditional view, capitalist development would generate the conditions in which the proletariat, the revolutionary class, would rebel against the bourgeoisie in a definitive attempt to suppress class structure and unequal relations. This theoretical framework inspired, for the first time in history, social struggles all over the world in which the main actor was the working class [@hobsbawmHistoriaSigloXX2011]. Nonetheless, although some of these revolutions[^5] still remain, the great majority of them collapsed and faded away.
 
-[^9]: Chinese, Cuban, and Vietnamese revolutions are yet developing in a rather traditional view of such a tradition.
+[^5]: Chinese, Cuban, and Vietnamese revolutions are yet developing in a rather traditional view of such a tradition.
 
 In an attempt to prove that Marxist theory is yet invaluable in examining capitalism, some scholars have clarified the position of antagonistic relations and collective action. Drawing on the contribution of @gramsciSelectionsPrisonNotebooks1971 and @poulantzasClaseSocialesCapitalismo1990, a new approach to Marxist collective action has been developing [@wrightInterrogatingInequalityEssays1994; @wrightClasses1985; @wrightHowBeAnticapitalist2019; @chibberClassMatrixSocial2022; @chibberConfrontingCapitalism2022; @chibberPostcolonialTheorySpecter2014; @hetlandStrangeDisappearanceCapitalism2013; @eidlinSocialClassSocial2018; @przeworskiCapitalismSocialDemocracy1985].
 
@@ -164,13 +118,70 @@ When the working class finally identifies its place within the class structure, 
 
 ### Hypothesis 3
 
-As many scholars have pointed out [@therbornClass21stCentury2012], the middle class has led many of the contemporary social movements. These movements, rather than being led by traditional organizations or parties, have been the result of the "unstable" place that such a class/group is in the class structure. Thus:
+As many scholars have pointed out [@therbornClass21stCentury2012], the middle class has led many contemporary social movements. Rather than being led by traditional organizations or parties, these movements have resulted from the "unstable" place that such a class is in the class structure. Thus:
 
 **H3potential(H3P):** Middle group (class) has a positive probability of joining collective action.
 
+\newpage
+
+# Data and Methodology
+
+## Data
+
+This article uses a quantitative methodology based on the [Social Survey Programme 2014 - Citizenship II (ISSP)](https://www.gesis.org/en/issp/modules/issp-modules-by-topic/citizenship/2014)[^6] (*N* = 49.087). This dataset applies a similar[^7] questionnaire in every country where it is applied. The sampling procedure differs for each country: in some countries, partly simple random samples were applied, whereas in others, partly multistage stratified random samples. The data was collected in two ways. The first one was through interviews (face-to-face, Computer Assisted Personal interviews, or completed on the telephone) or Self-administered questionnaires (Computer Assisted self-interviews or Computer-Assisted web interviews). The analysis is mostly applied to individuals that are 18 years or more with some exceptions[^8]. After processing the dataset, the sample was reduced to 33.582 individuals nested in 34 countries.
+
+[^6]: By the time this article has been written, another wave of the same thematic survey is under development and expected to fully realese in 2025.
+
+[^7]: It is a similar questionary because the survey don't apply the exact same questions in every country. However, the questions are prepared to grasp and collect the same dimensions for every question applied.
+
+[^8]: According to the ISSP, the exceptions were countries such as Finland, were individuals between 15 and 75 were surveyed, Japan, were 16 years old and older were surveyed, South Africa, were the respondents were 16 years or more, and Sweden, were the individuals were between 17 and 79 years old.
+
+## Methods
+
+[@huntington-kleinEffectIntroductionResearch2022]
+
+The hypotheses that led this study were tested by calculating OLS. According to Linear regressions are the "*best linear approximation of the relationship*" between two variables.
+
+As the literature says, Linear Models are appropriate when we seek [....]. In this case, since we are testing the effect that class structure has on the working class participation in collective action activities, other models that provide a better understanding of probability, such as Logistic and Logit, aren't required. To put it in other words, since we are not measuring the *probability* that the working class has to undertake collective action activities but the *influence* that class structure itself has on
+
+## Dependant Variable
+
+The dependent variable is a custom variable called "Collective Action Dummy." The construction of this variable was processed on a two-stage process.
+
+First, I created a collective action participation variable, which is the simple sum of four variables: 1) signing a political petition, 2) boycotting certain products, 3) taking part in a demonstration, and 4) donating money or raising funds. All these variables were measured following a five-point scale: Please indicate, for each one, whether you have done any of these things in the past year, whether you have done it in the more distant past, whether you have not done it but might do it or have not done it and would never do it (1. Have done it in the past year, 2. Have done it in the more distant past, 3. Have not done it but might do it, 4. Have not done it and would never do it, 8. Can't choose). Altogether, these variables measure a narrow but valuable repertoire of collective action activities. Following this step, I finally recoded this "original" collective variable turning the "Can't choose" option turning it into "NA," and later simplifying the numeric values of the whole variable. In other words, since the cleaned version of the variable had only 16 values, I then divided the variable by four, ending up with values from 0 to 4.
+
+Second, I then turned this variable into a dummy variable to measure probability. After the original value was finally recoded, I turned values from 1 to 4 as 1 and maintained 0 as 0. This means that in the resulting variable, 1 means "Participation in Collective Action Activities," and 0 "No participation in Collective Action Activities."
+
+## Independent Variables
+
+### Social Class
+
+The social class variable was created following Wright's [-@wrightClasses1985] class proposal analytic proposal. However, as many other scholars have noted, this endeavor is rather impossible because of the lack of available information on observational datasets. Thus, following
+
+### Union Membership
+
+To be constructed.
+
+Prior to the statistical analysis, all the coding workflow was done using R and its many packages[^9].
+
+[^9]: Most of the coding, wrangling, and analyses were used with tidyverse [@tidyverse], haven [@haven], sjPlot [@sjPlot], sjmisc [@sjmisc], sjlabelled [@sjlabelled], summarytools [@summarytools], car [@car], openxlsx [@openxlsx]. For presentation purposes stargazer [@stargazer], ggeffects [@ggeffects], and xtable [@xtable] were used.
+
+The results of the codification can be seen in Table \ref{desc-table}
+
+```{=tex}
+\begin{table}[ht] \centering \caption{Dataframe descriptive statistics}  \label{desc-table} \begin{tabular}{rllrrrrl}   \hline  & var & label & n & NA.prc & mean & sd & range \\    \hline 3 & acc2 & Dummy Collective Action & 33582 & 8.51 & 0.65 & 0.48 & 1 (0-1) \\    7 & unionized & Participated in a Union & 36153 & 1.51 & 0.44 & 0.50 & 1 (0-1) \\    5 & css & Social Class & 36706 & 0.00 & 6.67 & 2.45 & 8 (1-9) \\    4 & cs\_sub & Subjective Social Class & 34224 & 6.76 & 0.96 & 0.74 & 2 (0-2) \\    1 & AGE & Age & 36627 & 0.22 & 48.86 & 16.67 & 87 (15-102) \\    2 & SEX & Sex & 36696 & 0.03 & 1.51 & 0.50 & 1 (1-2) \\    6 & partner & Has a steady partner & 35142 & 4.26 & 0.69 & 0.46 & 1 (0-1) \\     \hline \end{tabular} \end{table}
+```
+\newpage
+
+# Analysis
+
 ## Models
 
-As shown in Table \ref{modelo-a}
+While this section is being written, some information about the model is available below:
+
+1.   In Table \ref{modelo-a-robust}, a model is run with Robust Standard errors to check for heterosckdasticity. The model shows that the statistical, direction, and magnitude of the Social Class variable is maintained.
+
+2.  Table \ref{modelo-a-vif}, on the other hand, runs a VIF test. It shows that no multicollinearity is present in our models.
 
 ```{r loading-model-a, include=FALSE}
 
@@ -185,7 +196,9 @@ load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables
 cat(modelo_a_star)
 
 ```
+
 \newpage
+
 # Discussion
 
 ```{r plotting-model-a, include=FALSE}
@@ -215,20 +228,24 @@ plot(dat, facet = TRUE)
 ```
 
 \newpage
+
 # Conclusions
 
 \newpage
-# References
-<div id="refs"></div> 
 
+# References
+
+::: {#refs}
+:::
 
 \newpage
+
 # Appendix
 
 ```{r loading-model-a-robust, include=FALSE}
 
 #Model robust
-library(modelsummary)
+library(stargazer)
 load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables/modelo_a_star_robust.RData")
 
 ```
@@ -236,5 +253,19 @@ load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables
 ```{r printing-model-a-robust, echo=FALSE, results='asis'}
 
 cat(modelo_a_star_robust)
+
+```
+
+```{r loading-model-a-vif, include=FALSE}
+
+#Model robust
+library(stargazer)
+load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables/modelo_a_star_vif.RData")
+
+```
+
+```{r printing-model-a-vif, echo=FALSE, results='asis'}
+
+cat(modelo_a_star_vif)
 
 ```

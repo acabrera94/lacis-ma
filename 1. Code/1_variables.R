@@ -226,7 +226,13 @@ frq(db1$acc2)
 # 5. Asimilamos al n de css ####
 
 #Filtrar la base de datos para mantener solo las filas donde "clase_social" no sea NA
-db1 <- db1[complete.cases(db1$css), ]
+#db1 <- db1[complete.cases(db1$css), ]
+
+frq(db1$css) #contamos css N
+db1 <- db1 %>%
+  filter(!is.na(css))
+
+
 
 
 # 7. Exportar y guardar ####

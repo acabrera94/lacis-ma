@@ -9,12 +9,21 @@ pacman::p_load(sjPlot,
                margins,
                ggeffects,
                modelsummary,
-               fixest)
+               sandwich,
+               lmtest,
+               arm)
 
 rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
 options(scipen=999) # valores sin notación científica
 
 db2<-readRDS("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/3. Dataframes/1_variables.RDS")
+
+
+
+
+# Preambulo #### 
+
+#Filtramos por submuestra de variables deseadas
 
 
 
@@ -35,6 +44,8 @@ db2$pos_pol<-as_factor(db2$pos_pol) #Posición política
 
 
 # 2. Modelos ####
+
+#More info at.
 
 ## 2.1 Modelo A: Variable dependiente Acción Colectiva  / #Independiente = css ####
 
@@ -73,35 +84,47 @@ modelo_a<-list(reg1, reg2, reg3, reg4, reg5)
 ## 2.2 Modelo A: With robust SE ####
 
 #Reg 1
-reg1_robust<-feglm(acc2 ~ css+unionized, data = db2, se = 'hetero',
-                   family = binomial(link = "logit"))
+reg1_robust<-coeftest(reg1, vcov = vcovHC(reg1))
 print(reg1_robust)
 
 #Reg 2
-reg2_robust<-feglm(acc2 ~ css+unionized+cs_sub+SEX+partner, data = db2, se = 'hetero',
-                   family = binomial(link = "logit"))
+reg2_robust<-coeftest(reg2, vcov = vcovHC(reg2))
 print(reg2_robust)
 
 #Reg 3
-reg3_robust<-feglm(acc2 ~ css+unionized+cs_sub+AGE, data = db2, se = 'hetero',
-                   family = binomial(link = "logit"))
+reg3_robust<-coeftest(reg3, vcov = vcovHC(reg3))
 print(reg3_robust)
 
 #Reg 4
-reg4_robust<-feglm(acc2 ~ css+unionized+AGE, data = db2, se = 'hetero',
-                   family = binomial(link = "logit"))
+reg4_robust<-coeftest(reg4, vcov = vcovHC(reg4))
 print(reg4_robust)
 
 
 # Modelo A.5
-reg5_robust<-feglm(acc2 ~ css+unionized+cs_sub+AGE+SEX+partner, data = db2, se = 'hetero',
-                   family = binomial(link = "logit"))
+reg5_robust<-coeftest(reg5, vcov = vcovHC(reg5))
 print(reg5_robust)
 
 
 modelo_a_robust<-list(reg1_robust, reg2_robust, reg3_robust,
                       reg4_robust, reg5_robust)
 
+
+## 2.3 Calculating predicted values and residuals ####
+#df_inst<-select(db2, acc2, css, unionized) # DF instrumental
+
+#reg1_pred_res<-glm(acc2 ~ css+unionized, data = df_inst,
+          #family = binomial (link = "logit"))
+
+
+
+
+
+
+#df_inst$res<-residuals(reg1_pred_res) #Residuals
+
+## 2.3 Calcullatin multicolineallity ####
+
+vif_model_5<-car::vif(reg5)
 
 
 
@@ -127,30 +150,62 @@ modelo_a_star<-stargazer(modelo_a,
                     label = "modelo-a",
                     type = "latex"
                     ) 
-
-
-
 #Guardamos Modelo A
 save(modelo_a_star,
      file = "C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables/modelo_a_star.RData")
 
 
-stargazer(model_a_robust)
 
-## 3.1 Modelo (SE ROBUST) ####
+## 3.2 Modelo (SE ROBUST) ####
 
-caption<-"Logit model measuring collective action participation (Robust SE)" # Model's title
 
-modelo_a_star_robust<-modelsummary(modelo_a_robust,
-                                   output = "latex",
-                                   title = caption,
-                                   stars = TRUE) 
+
+modelo_a_star_robust<-stargazer(modelo_a,
+                         header = FALSE,
+                         column.sep.width = "0.5pt",
+                         title = "Logit model measuring collective action participation (Robust SE on parenthesis)",
+                         covariate.labels = c("Small Employers (Ref: Burgeoisie)", "Petty Bourgeoisie", "Expert Managers",
+                                              "Expert non-managers", "Semi-credentialled managers", "Semi-credentialled worker",
+                                              "Non-credentialled manager", "Traditional proletariat","Trade union membership: Yes (ref: No)",
+                                              "Subjective Middle Class (ref: Upper class)", "Subjective Working Class",
+                                              "Female (ref: Male)", "Age", "Has a steady partner (ref: No)"),
+                         digits = 2,
+                         dep.var.caption  = "Dependant Variable: Collective Action Participation",
+                         dep.var.labels.include = FALSE,
+                         no.space = TRUE,
+                         font.size = "small",
+                         align = TRUE,
+                         label = "modelo-a-robust",
+                         type = "latex"
+                         ) 
 print(modelo_a_star_robust)
 
-
-#Guardamos Modelo A
+#Guardamos Modelo A Robust
 save(modelo_a_star_robust,
      file = "C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables/modelo_a_star_robust.RData")
+
+
+## 3.3 Modelo (SE ROBUST) ####
+
+modelo_a_star_vif<-stargazer(vif_model_5,
+                                header = FALSE,
+                                column.sep.width = "0.5pt",
+                                title = "VIF Analysis of the Logistic Model",
+                                digits = 2,
+                                dep.var.caption  = "VIF Analysis",
+                                dep.var.labels.include = FALSE,
+                                no.space = TRUE,
+                                font.size = "small",
+                                align = TRUE,
+                                label = "modelo-a-vif",
+                                type = "latex"
+) 
+print(modelo_a_star_vif)
+
+#Guardamos Modelo A Robust
+save(modelo_a_star_vif,
+     file = "C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables/modelo_a_star_vif.RData")
+
 
 
 
@@ -183,6 +238,20 @@ save(reg1,
 
 
 
+# 4. Plotting residuals and predicted values ####
+
+#Using binned residual plot: must read about this: 
+# https://bookdown.org/jefftemplewebb/IS-6489/logistic-regression.html#assessing-logistic-model-fit
+
+binnedplot(fitted(reg1), 
+           residuals(reg1, type = "response"), 
+           nclass = NULL, 
+           xlab = "Expected Values", 
+           ylab = "Average residual", 
+           main = "Binned residual plot", 
+           cex.pts = 0.8, 
+           col.pts = 1, 
+           col.int = "gray")
 
 
 
