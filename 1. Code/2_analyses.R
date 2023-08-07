@@ -6,6 +6,7 @@ pacman::p_load(sjPlot,
                stargazer,
                effects,
                dplyr,
+               haven,
                margins,
                ggeffects,
                modelsummary,
@@ -21,11 +22,11 @@ db2<-readRDS("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/3. Dat
 
 
 
-# Preambulo #### 
-
-#Filtramos por submuestra de variables deseadas
 
 
+#Filtramos por base submuestra 
+
+# Recode css
 
 
 # 1. Multivariate Analysis ####
@@ -35,11 +36,11 @@ db2<-readRDS("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/3. Dat
 
 #Pasamos a factor para regresión
 db2$css<-as_factor(db2$css) #Clase Social Marx
-db2$css_grouped<-as_factor(db2$css_grouped) #Clase Social Marx
+#db2$css_grouped<-as_factor(db2$css_grouped) #Clase Social Marx
 db2$SEX<-as_factor(db2$SEX) #Sexo
 db2$cs_sub<-as_factor(db2$cs_sub) #Clase Social Subj.
 db2$unionized<-as_factor(db2$unionized) # unionized.
-db2$pos_pol<-as_factor(db2$pos_pol) #Posición política
+#db2$pos_pol<-as_factor(db2$pos_pol) #Posición política
 
 
 
@@ -48,6 +49,7 @@ db2$pos_pol<-as_factor(db2$pos_pol) #Posición política
 #More info at.
 
 ## 2.1 Modelo A: Variable dependiente Acción Colectiva  / #Independiente = css ####
+
 
 # Modelo A
 reg1<-glm(acc2 ~ css+unionized, data = db2,
@@ -114,8 +116,6 @@ modelo_a_robust<-list(reg1_robust, reg2_robust, reg3_robust,
 
 #reg1_pred_res<-glm(acc2 ~ css+unionized, data = df_inst,
           #family = binomial (link = "logit"))
-
-
 
 
 
@@ -215,26 +215,56 @@ save(modelo_a_star_vif,
 # Addittional resources:
 # https://strengejacke.github.io/ggeffects/articles/introduction_plotmethod.html
 
+#https://strengejacke.github.io/ggeffects/articles/introduction_marginal_effects.html
+
 
 
 # Effects modelo A (effects)
 
 
-# Union and Class
-dat <- ggpredict(reg5, terms = c("unionized", "css"))
+# Class
+dat <- ggpredict(reg1, terms = c("css")) # Predict marginal with ggpredict
+get_x_labels(dat) # we get x labels from the original model
+plot_css_me<-ggplot(dat, aes(x, predicted)) + 
+  geom_col() +
+  ylab("Marginal Effects")+
+  xlab("Social Class")
 
-  
+print(plot_css_me)
+
+plot_css_me<-plot_css_me +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) # Cambiamos los labels a vertical
+
+print(plot_css_me)
 
 
+#Labels
+x_label <- c("Burgeoisie", "Small Employers","Petty Bourgeoisie","Expert Managers",
+            "Expert non-managers", "Semi-credentialled managers",
+            "Semi-credentialled worker","Non-credentialled manager",
+            "Traditional proletariat")
+
+plot_css_me<-plot_css_me +
+  scale_x_discrete(labels = x_label) #Added labels to x 
+
+# Color
+
+# Create a new variable "social_group" based on the range of 'x' values
+dat$social_group <- ifelse(dat$x %in% 1:3, "Upper class",
+                           ifelse(dat$x %in% 4:6, "Middle Groups", "Working Class"))
 
 
+plot_css_me<-plot_css_me<-ggplot(dat, aes(x=x, y=predicted, fill = social_group)) + 
+  geom_col() +
+  ylab("Marginal Effects")+
+  xlab("Social Class")+
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))+ # Cambiamos los labels a vertical
+  scale_fill_manual(values = c("Upper class" = "red", "Middle Groups" = "blue", "Working Class" = "green")) +
+  scale_x_discrete(labels = x_label) #Added labels to x 
+plot_css_me
 
-
-modelo_a_plot<-plot(allEffects(reg1)) #Plot modelo A
-
-
-save(reg1,
-     file = "C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/5. Plots/reg1.RData")
+save(plot_css_me,
+     file = "C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/5. Plots/plot_css_me")
 
 
 

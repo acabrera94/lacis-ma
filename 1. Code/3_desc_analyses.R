@@ -1,13 +1,15 @@
 library(pacman)
 pacman::p_load(sjPlot,
+               tidyverse,
+               haven,
                xtable,
-               stargazer)
+               stargazer,
+               dplyr)
 
 rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
 options(scipen=999) # valores sin notación científica
 
-db2<-readRDS("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/3. Dataframes/2_analyses.RDS")
-
+db2<-readRDS("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/3. Dataframes/1_variables.RDS")
 
 
 
@@ -15,27 +17,41 @@ db2<-readRDS("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/3. Dat
 
 ## 1. Generamos una base clon para realizar descr con sjmisc ####
 
-desc_db<-select(db2,
-            acc2,
-            unionized,
-            css,
-            cs_sub,
-            AGE,
-            SEX,
-            partner)
+desc_db <- db2%>%
+  dplyr::select(acc2, css, AGE, SEX,
+                unionized, cs_sub, partner)
 
 ## 2. Generamos la tabla ####
 
+#Descriptive Dataset
 descriptivo1<-sjmisc::descr(desc_db,
-                            show = c("label","range", "mean", "sd", "NA.prc", "n"))
+                            show = c("label","range", "mean", "sd", "NA.prc", "n")) 
 
 print(descriptivo1)
+
+
+#Descriptive Social Class
+social_class_table<-freq(desc_db$css,
+     report.nas = FALSE,
+     display.labels = TRUE
+     )
+
 ## 2. Pasamos a LaTeX con xtable ####
 
+#Descriptive table for dataset
 xtable(descriptivo1,
        type = "latex",
        label = "desc-table",
        caption = "Descriptives Statistics")
+
+
+#Descriptive table for Social Class dataset
+#More info: https://rdrr.io/rforge/tab/man/tabfreq.html
+
+xtable(social_class_table,
+       type = "latex",
+       label = "css-table",
+       caption = "Social Class")
 
 
 # Paso 2: Calcular frecuencia y frecuencia acumulada para todas las columnas numéricas

@@ -32,11 +32,11 @@ body {
 ```
 # Disclaimer
 
-This is a work in process with everything it means. The reader will encounter - I apologize- some parts without all the references I should use on them (this is due to the fact that I'm transferring all my notes to [**Obsidian**](https://obsidian.md/). You should do it as well, trust me). Also, in some sections that appear "completed" or more than those that aren't, there will be some ideas underdeveloped or not at their fullest potential. Finally, regarding the statistical analysis, this will probably be the last thing that I complete since I'm still testing models, coding, and thinking about the best way to graphic regression models behind the scenes[^1].
+This is a work in process with everything it means. The reader will encounter - I apologize- some parts without all the references I should use on them (this is because I'm transferring all my notes to [**Obsidian**](https://obsidian.md/). You should do it as well, trust me). Also, in some sections that appear "completed" or more than those that aren't, some ideas will be underdeveloped or not at their fullest potential. Finally, regarding the statistical analysis, this will probably be the last thing I complete since I'm still testing models, coding, and thinking about the best way to graphic regression models behind the scenes[^1].
 
 [^1]: To be honest, since I'm hosting this work on github, the courtains are kind of open anyways, so you can watch me travelling in this ongoing research. Here's the [**link**](https://github.com/acabrera94/lacis-ma) if you find it useful.
 
-Lastly, if you have read this piece and you have any comments, questions, or critiques (or if you think I should abandon academia). I'm all ears and eyes. Keep in mind, though, that English isn't my first language, so I'm trying really hard. I truly believe what Sofia Vergara said about that in Modern Family. Anyways, if you will, my contact can be found here: cabrera6\@wisc.edu.
+Lastly, if you have read this piece and have any comments, questions, or critiques (or if you think I should abandon academia), I'm all ears and eyes. Keep in mind, though, that English isn't my first language, so I'm trying really hard. I genuinely believe what Sofia Vergara said about that in Modern Family. Anyways, if you will, my contact can be found here: cabrera6\@wisc.edu.
 
 Enjoy.
 
@@ -50,13 +50,13 @@ Social movement scholars have been researching collective action for an extended
 
 Although undoubtedly prolific, the rising of social movements that mainly focused on what Marxist tradition calls "the structure," that is, the socio-economic relations. From the #Occupy Wall Street movement demanding more rights for the 99% in the U.S. [@tejerinaIndignationOccupationNew2013], the Arab Spring [@bayatArabSpringIts2013], the *Indignados* in Spain occupying public spaces and demanding new social pacts, the recent anti-austerity movements in Europe demanding the end of the public cuts, to the recent anti-neoliberal revolts in South America,
 
-By the time these uprisings have been unfolding, scholars have shown a growing interest in the foundations that could explain these demonstrations. This has led to a revitalization of political economy, class, and labor in explaining the origins of movements. This article is an attempt to contribute to such a purpose.
+By the time these uprisings unfolded, scholars have shown a growing interest in the foundations that could explain these demonstrations. This has led to a revitalization of political economy, class, and labor in explaining the origins of movements. This article is an attempt to contribute to such a purpose.
 
-Although sometimes influenced by Marxist tradition [@mcadamPoliticalProcessDevelopment1999; @mcadamDynamicsContention2004; @tarrowPowerMovementSocial2011], the classic social movement agenda[^2] has somehow omitted the central role of capitalism in the making of social movement. In this work, however, I focus on the effects of class structure as a central component in explaining social movements. Drawing on contemporary Marxist theory and logistic multivariate regression models, I argue that class structure negatively impacts working-class participation in collective action activities.
+Although sometimes influenced by Marxist tradition [@mcadamPoliticalProcessDevelopment1999; @mcadamDynamicsContention2004; @tarrowPowerMovementSocial2011], the classic social movement agenda[^2] has somehow omitted the central role of capitalism in the making of social movement. In this work, however, I focus on the effects of class structure as a significant component in explaining social movements. Drawing on contemporary Marxist theory and logistic multivariate regression models, I argue that class structure negatively impacts working-class participation in collective action activities.
 
 [^2]: @mcadamDynamicsContention2004 refer to political opportunities theory, mobilizing resource, and collective action frames as the classical social movement agenda. I argue that contentious politics is, as well, in such a list.
 
-In what follows, the rest of the paper is organized into five major parts. The first part corresponds to the literature review, where major bibliographic and prior research on social movements, political economy and social movements, and class and social movements is reviewed. The second part corresponds to the methodology. In this part, the methods used and the data are described. This section is followed by the analysis section, where the hypothesis[^3] is presented, and the statistical model is calculated and plotted. The discussion section follows the analysis one, where the results are discussed in light of literature and prior research. Finally, the last section corresponds to the conclusion.
+In what follows, the rest of the paper is organized into five major parts. The first part corresponds to the literature review, where significant bibliographic and prior research on social movements, political economy and social movements, and class and social movements is reviewed. The second part corresponds to the methodology. In this part, the methods used and the data are described. This section is followed by the analysis section, where the hypothesis[^3] is presented, and the statistical model is calculated and plotted. The discussion section follows the analysis one, where the results are discussed in light of literature and prior research. Finally, the last section corresponds to the conclusion.
 
 [^3]: It is very likely that, as this research goes forward, this unfolds into more than one hypothesis.
 
@@ -88,7 +88,7 @@ The classical social movement agenda led the research on diverse aspects and per
 
 Regarding the European scenario, @dellaportaSocialMovementsTimes2020 claim that recent European state policies have prompted heterogeneous organizations, movements, and other groups to walk to the street against such policies. In such a scenario, the authors argue that
 
-, although academia has left the political economy since 1970, it su
+@giugniHowCivilSociety2016 argue in their work that material deprivation interacts with the perception of openness or closeness of the political environment (institutional). In other words, they argue that to prompt a social movement, material deprivation must be framed as inherently bad. **They also mention something about how material deprivation itself diminishes political participation.**
 
 ## Class and Social Movements
 
@@ -138,11 +138,7 @@ This article uses a quantitative methodology based on the [Social Survey Program
 
 ## Methods
 
-[@huntington-kleinEffectIntroductionResearch2022]
-
-The hypotheses that led this study were tested by calculating OLS. According to Linear regressions are the "*best linear approximation of the relationship*" between two variables.
-
-As the literature says, Linear Models are appropriate when we seek [....]. In this case, since we are testing the effect that class structure has on the working class participation in collective action activities, other models that provide a better understanding of probability, such as Logistic and Logit, aren't required. To put it in other words, since we are not measuring the *probability* that the working class has to undertake collective action activities but the *influence* that class structure itself has on
+The hypotheses that led this study were tested by calculating logistic multivariate regressions. This approach was used to examine and calculate the probabilities that the working class has to participate in collective action activities. If the hypotheses presented above, the working class has a structural handicap to partake in such activities and, therefore, it should show presenting less probability [@huntington-kleinEffectIntroductionResearch2022].
 
 ## Dependant Variable
 
@@ -156,17 +152,25 @@ Second, I then turned this variable into a dummy variable to measure probability
 
 ### Social Class
 
-The social class variable was created following Wright's [-@wrightClasses1985] class proposal analytic proposal. However, as many other scholars have noted, this endeavor is rather impossible because of the lack of available information on observational datasets. Thus, following
+The social class variable was created following Wright's [-@wrightClasses1985; -@wrightClassCountsComparative1997] class proposal analytic proposal. However, as many other scholars have noted [@ahumadaClassPoliticsCollective2022], this endeavor is rather impossible because of the lack of precise available information on observational datasets.
+
+Wright [-@wrightClasses1985; -@wrightClassCountsComparative1997] defines social class based on three criteria: a) The means of production ownership, b) skill level, and c) organizational assets (informally known as authority).
+
+For the first criterion, the means of production ownership, I first distinguished between individuals who were working or have worked. Then, I split them into those who work for someone (wage earners) and those who don't (prop. Later, I separated the resulting group into 3 subgroups: 1) those who have 10 or more employees, 2) those who have 1 to 9 employers, and 3) self-employed.
+
+For the second criterion, skill level, I used the ISCO08 aggregated to two digits. I purposely left education outside the equation since the variable asked about the level of education (completed or not). In my eyes, this variable could be used as a proxy but not as a main variable because it doesn't show the exact labor activities that they participate in.
+
+The third criterion is where the divergences with Wright's model begin. The ISSP dataset does not ask for the authority itself. However, it asks for supervision which directly relates to authority.
+
+The final codification resulted in 9 distinctive categories, which, individually, constitute 9 social classes: 1) Bourgeoisie (those who have 10 or more employers, supervise, and are not wage earners), 2) Small Employers those who have 9 to 1 employers, supervise and are not wage earners), 3) Petty Bourgeoisie (self-employed, don't supervise, and are not wage earners), 4) Expert Managers (wage earners, supervise, and are experts according to ISO08), 5) Expert non-managers (wage earners, don't supervise, and are experts according to ISO08), 6) Semi-credential managers (wage earners, supervise, and work at some skill-required activities), 7) Semi-credential worker (wage earners, don't supervise, and work at some skill-required activities), 8) Non-credential manager (wage earners, supervise, and work in non-skill-required activities), 9) Traditional proletariat (wage earners, don't supervise, and work in non-skill-required activities).
 
 ### Union Membership
 
-To be constructed.
+Similar to the Collective Action variable, the ISSP asked individuals "whether you, belong and actively participate, belong but don't actively participate, used to belong but do not any more, or have never belonged to it". The answers present a polarized option that ranges from: 1. Belong and actively participate 2. Belong but don't actively participate 3. Used to belong but do not anymore, 4. Never belonged to it. The variable also has an option for "Can't Choose" and "No answer," which have both been recoded into NA. Finally, for processing the variable, values 1 and 2 were recoded as 1, which means participation. Conversely, values 3 and 4 were recoded as 0, which means no participation.
 
-Prior to the statistical analysis, all the coding workflow was done using R and its many packages[^9].
+Prior to the statistical analysis, all the coding workflow was done using R and its many packages[^9]. The results of the codification can be seen in Table \ref{desc-table}
 
 [^9]: Most of the coding, wrangling, and analyses were used with tidyverse [@tidyverse], haven [@haven], sjPlot [@sjPlot], sjmisc [@sjmisc], sjlabelled [@sjlabelled], summarytools [@summarytools], car [@car], openxlsx [@openxlsx]. For presentation purposes stargazer [@stargazer], ggeffects [@ggeffects], and xtable [@xtable] were used.
-
-The results of the codification can be seen in Table \ref{desc-table}
 
 ```{=tex}
 \begin{table}[ht] \centering \caption{Dataframe descriptive statistics}  \label{desc-table} \begin{tabular}{rllrrrrl}   \hline  & var & label & n & NA.prc & mean & sd & range \\    \hline 3 & acc2 & Dummy Collective Action & 33582 & 8.51 & 0.65 & 0.48 & 1 (0-1) \\    7 & unionized & Participated in a Union & 36153 & 1.51 & 0.44 & 0.50 & 1 (0-1) \\    5 & css & Social Class & 36706 & 0.00 & 6.67 & 2.45 & 8 (1-9) \\    4 & cs\_sub & Subjective Social Class & 34224 & 6.76 & 0.96 & 0.74 & 2 (0-2) \\    1 & AGE & Age & 36627 & 0.22 & 48.86 & 16.67 & 87 (15-102) \\    2 & SEX & Sex & 36696 & 0.03 & 1.51 & 0.50 & 1 (1-2) \\    6 & partner & Has a steady partner & 35142 & 4.26 & 0.69 & 0.46 & 1 (0-1) \\     \hline \end{tabular} \end{table}
@@ -179,9 +183,11 @@ The results of the codification can be seen in Table \ref{desc-table}
 
 While this section is being written, some information about the model is available below:
 
-1.   In Table \ref{modelo-a-robust}, a model is run with Robust Standard errors to check for heterosckdasticity. The model shows that the statistical, direction, and magnitude of the Social Class variable is maintained.
+1.  Table \ref{modelo-a} shows the results of the Model.
 
-2.  Table \ref{modelo-a-vif}, on the other hand, runs a VIF test. It shows that no multicollinearity is present in our models.
+2.  In Table \ref{modelo-a-robust}, a model is run with Robust Standard errors to check for heteroskedasticity. The model shows that the statistical, direction, and magnitude of the Social Class variable is maintained.
+
+3.  Table \ref{modelo-a-vif}, on the other hand, test for multicollinearity. It shows that no multicollinearity is present in our models.
 
 ```{r loading-model-a, include=FALSE}
 
@@ -210,20 +216,12 @@ load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/5. Plots/reg1.
 
 ```
 
-```{r plotting-model-a-1, echo=FALSE, fig.cap="Logistic regression predicted values"}
-
-plot(allEffects(reg1)) #Plot modelo A
-
-
-```
-
-```{r plotting-model-a-2, echo=FALSE, fig.cap="Marginal Effects for Social Class and Union Membership"}
+```{r plotting-model-a-2, echo=FALSE, fig.cap="Marginal Effects for Social Class"}
+load("C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/5. Plots/plot_css_me")
 library(ggeffects)
 #Plot union_class_marginaleffects
 
-dat <- ggpredict(reg1, terms = c("unionized", "css"))
-plot(dat, facet = TRUE)
-
+print(plot_css_me)
 
 ```
 
