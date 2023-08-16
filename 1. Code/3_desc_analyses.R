@@ -4,7 +4,8 @@ pacman::p_load(sjPlot,
                haven,
                xtable,
                stargazer,
-               dplyr)
+               dplyr,
+               fdth)
 
 rm(list=ls())       # borrar todos los objetos en el espacio de trabajo
 options(scipen=999) # valores sin notación científica
@@ -21,6 +22,21 @@ desc_db <- db2%>%
   dplyr::select(acc2, css, AGE, SEX,
                 unionized, cs_sub, partner)
 
+desc_db <- desc_db %>%
+  mutate(cs_lab = case_when(
+    css == 1 ~ "Burgeoisie",
+    css == 2 ~ "Small Employers",
+    css == 3 ~ "Petty Bourgeoisie",
+    css == 4 ~ "Expert Managers",
+    css == 5 ~ "Expert non-managers",
+    css == 6 ~ "Semi-credentialled managers",
+    css == 7 ~ "Semi-credentialled worker",
+    css == 8 ~ "Non-credentialled manager",
+    css == 9 ~ "Traditional proletariat",
+    TRUE ~ NA_character_
+  ))
+
+
 ## 2. Generamos la tabla ####
 
 #Descriptive Dataset
@@ -31,10 +47,11 @@ print(descriptivo1)
 
 
 #Descriptive Social Class
-social_class_table<-freq(desc_db$css,
-     report.nas = FALSE,
-     display.labels = TRUE
+social_class_table<-freq(desc_db$cs_lab
      )
+
+save(social_class_table,
+     file = "C:/Users/Alvaro C/Dropbox/3. Educacion/1. MA_LACIS/Lacis_MA/4. Data_Tables/social_class_table.RData")
 
 ## 2. Pasamos a LaTeX con xtable ####
 
@@ -48,8 +65,7 @@ xtable(descriptivo1,
 #Descriptive table for Social Class dataset
 #More info: https://rdrr.io/rforge/tab/man/tabfreq.html
 
-xtable(social_class_table,
-       type = "latex",
+xtable.fdt(social_class_table,
        label = "css-table",
        caption = "Social Class")
 
